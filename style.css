@@ -1,0 +1,1080 @@
+/* ===== VARIABLES ===== */
+:root {
+    --primary: #2c3e50;
+    --secondary: #e74c3c;
+    --accent: #3498db;
+    --light: #ecf0f1;
+    --dark: #2c3e50;
+    --gray: #95a5a6;
+    --transition: all 0.4s ease-in-out; /* Slightly longer and smoother transition */
+    --shadow: 0 8px 25px rgba(0,0,0,0.15); /* More pronounced shadow */
+    --radius: 12px; /* Slightly more rounded corners */
+    --header-height: 90px; /* Increased header height */
+
+    /* New hero-specific colors */
+    --hero-overlay-color-start: rgba(44, 62, 80, 0.95);
+    --hero-overlay-color-end: rgba(52, 152, 219, 0.9);
+
+    /* New header colors */
+    --header-bg-start: #2c3e50; /* Dark blue */
+    --header-bg-end: #34495e;   /* Slightly lighter dark blue */
+    --header-text-color: #ecf0f1; /* Light gray for text */
+    --header-accent-color: #f39c12; /* Orange for accents */
+}
+
+/* ===== BASE STYLES ===== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Poppins', sans-serif; /* Changed font for a modern look */
+    line-height: 1.7; /* Increased line height for readability */
+    color: var(--dark);
+    background-color: #f0f2f5; /* Lighter background */
+    overflow-x: hidden;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+ul {
+    list-style: none;
+}
+
+img {
+    max-width: 100%;
+    display: block;
+}
+/* ===== NEW SECTION: Beauty & Skincare ===== */
+.beauty-skincare-section {
+    background-color: #fce4ec; /* Attractive light pink */
+    padding: 100px 0;
+}
+
+.beauty-skincare-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 40px;
+}
+
+.beauty-skincare-card {
+    background: white;
+    border-radius: var(--radius);
+    overflow: hidden;
+    box-shadow: var(--shadow);
+    transition: var(--transition);
+    border: 1px solid rgba(0,0,0,0.05);
+    display: flex;
+    flex-direction: column;
+}
+
+.beauty-skincare-card:hover {
+    transform: translateY(-15px);
+    box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+    border-color: #e91e63; /* A vibrant pink accent color for this section */
+}
+
+.beauty-skincare-img {
+    height: 320px;
+    background-color: #fdf2f5; /* Lighter background for images */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    padding: 20px;
+}
+
+.beauty-skincare-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    transition: transform 0.6s ease;
+}
+
+.beauty-skincare-card:hover .beauty-skincare-img img {
+    transform: scale(1.1);
+}
+
+.beauty-skincare-info {
+    padding: 25px;
+    text-align: center;
+    flex-grow: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.beauty-skincare-info h3 {
+    font-size: 1.6rem;
+    color: var(--primary);
+    font-weight: 700;
+}
+
+
+/* Adjustments for responsiveness on new section */
+@media (max-width: 768px) {
+    .beauty-skincare-grid {
+        grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+        gap: 25px;
+    }
+    .beauty-skincare-img {
+        height: 280px;
+    }
+}
+
+@media (max-width: 576px) {
+    .beauty-skincare-grid {
+        grid-template-columns: 1fr;
+    }
+    .beauty-skincare-img {
+        height: 220px;
+    }
+}
+
+.container {
+    width: 92%; /* Slightly wider container */
+    max-width: 1280px; /* Increased max-width */
+    margin: 0 auto;
+    padding: 0 20px; /* Increased padding */
+}
+
+.btn {
+    display: inline-block;
+    padding: 14px 35px; /* Larger button */
+    background-color: var(--secondary);
+    color: white;
+    border-radius: 50px;
+    font-weight: 700; /* Bolder text */
+    text-transform: uppercase;
+    letter-spacing: 1.5px; /* Increased letter spacing */
+    transition: var(--transition);
+    border: none;
+    cursor: pointer;
+    box-shadow: var(--shadow);
+    position: relative;
+    overflow: hidden; /* For hover effect */
+    z-index: 1;
+}
+
+.btn:hover {
+    background-color: #c0392b;
+    transform: translateY(-5px); /* More pronounced lift */
+    box-shadow: 0 18px 35px rgba(0,0,0,0.2);
+}
+
+.btn::before { /* Hover effect */
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: rgba(255, 255, 255, 0.2);
+    transition: all 0.3s ease;
+    z-index: -1;
+}
+
+.btn:hover::before {
+    left: 0;
+}
+
+
+section {
+    padding: 100px 0; /* More vertical spacing */
+}
+
+.section-title {
+    text-align: center;
+    margin-bottom: 70px; /* More spacing below title */
+    position: relative;
+    animation: fadeIn 1s ease-out; /* Fade in animation for titles */
+}
+
+.section-title h2 {
+    font-size: 3rem; /* Larger title font */
+    color: var(--primary);
+    text-transform: uppercase;
+    margin-bottom: 20px; /* More space below h2 */
+    font-weight: 800; /* Extra bold */
+    position: relative;
+    display: inline-block; /* To allow pseudo-elements to align correctly */
+}
+
+.section-title h2::before,
+.section-title h2::after {
+    content: '';
+    position: absolute;
+    height: 3px;
+    background: var(--secondary);
+    bottom: -10px;
+    width: 30px;
+    transition: var(--transition);
+}
+
+.section-title h2::before {
+    left: -40px;
+}
+
+.section-title h2::after {
+    right: -40px;
+}
+
+.section-title:hover h2::before {
+    left: 0;
+}
+
+.section-title:hover h2::after {
+    right: 0;
+}
+
+
+/* ===== HEADER & NAVIGATION ===== */
+header {
+    background: linear-gradient(to right, var(--header-bg-start), var(--header-bg-end)); /* Gradient background */
+    box-shadow: var(--shadow);
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 1000;
+    height: var(--header-height);
+    display: flex;
+    align-items: center;
+    transition: all 0.3s ease-in-out; /* Smoother transition for height change */
+    transform: translateY(-100%); /* Start off-screen for animation */
+    animation: slideInDown 0.8s ease-out forwards; /* Slide in animation */
+}
+
+/* Header on scroll */
+header.scrolled {
+    height: 70px; /* Shrink header on scroll */
+    box-shadow: 0 5px 20px rgba(0,0,0,0.2);
+}
+
+.header-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%; /* Ensure it spans full width of container */
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    height: 100%;
+}
+
+.logo-link {
+    display: flex;
+    align-items: center;
+    transition: transform 0.3s ease;
+}
+
+.logo-link:hover {
+    transform: scale(1.03); /* Subtle scale on logo hover */
+}
+
+.logo-img {
+    height: 70px; /* Larger logo image */
+    width: auto;
+    border-radius: 50%; /* Make logo round */
+    margin-right: 15px;
+    object-fit: cover;
+    box-shadow: 0 0 10px rgba(0,0,0,0.2);
+    border: 3px solid var(--header-accent-color); /* Colorful border */
+    transition: border-color 0.3s ease;
+}
+
+.logo-link:hover .logo-img {
+    border-color: var(--secondary); /* Change border color on hover */
+}
+
+.logo-text {
+    display: flex;
+    flex-direction: column;
+}
+
+.logo-text .company-name {
+    font-size: 2rem; /* Larger company name */
+    font-weight: 800; /* Bolder company name */
+    color: var(--header-text-color); /* Light text color */
+    line-height: 1.1;
+    text-shadow: 1px 1px 3px rgba(0,0,0,0.3);
+}
+
+.logo-text .company-name span {
+    color: var(--header-accent-color); /* Accent color for span */
+    transition: color 0.3s ease;
+}
+
+.logo-link:hover .logo-text .company-name span {
+    color: var(--secondary); /* Change span color on hover */
+}
+
+.logo-text .tagline {
+    font-size: 0.95rem; /* Slightly larger tagline */
+    color: rgba(255, 255, 255, 0.7); /* Lighter tagline */
+    margin-top: 5px;
+    font-style: italic;
+}
+
+.contact-info {
+    display: flex;
+    align-items: center;
+    gap: 30px; /* Space between phone group and social links */
+    /* Added flex-wrap for responsiveness */
+    flex-wrap: wrap; /* Allows items to wrap to the next line */
+    justify-content: flex-end; /* Align items to the end by default */
+}
+
+.phone-group {
+    display: flex; /* Already flex, but ensure it's row by default */
+    flex-direction: row; /* Change to row to display horizontally */
+    align-items: center; /* Vertically align items */
+    gap: 15px; /* Add some space between phone numbers */
+    flex-wrap: wrap; /* Allow numbers to wrap if space is constrained */
+    justify-content: flex-end; /* Align to the right for desktop */
+    color: var(--header-text-color); /* Light text color */
+    font-weight: 600;
+    line-height: 1.4;
+    /* Ensure it doesn't take up more space than needed */
+    flex-shrink: 0;
+}
+
+.phone-item {
+    display: flex;
+    align-items: center;
+    transition: transform 0.2s ease;
+    white-space: nowrap; /* Prevent phone numbers from wrapping */
+}
+
+.phone-item:hover {
+    transform: translateX(-5px); /* Slight slide on hover */
+    color: var(--header-accent-color);
+}
+
+.phone-item i {
+    margin-right: 8px;
+    color: var(--header-accent-color); /* Accent color for icons */
+    font-size: 1.1rem;
+}
+
+.social-links {
+    display: flex;
+    /* flex-shrink: 0; */ /* Allow social links to shrink if needed */
+}
+
+.social-links a {
+    width: 40px; /* Larger social icons */
+    height: 40px;
+    border-radius: 50%;
+    background-color: rgba(255, 255, 255, 0.15); /* Slightly transparent background */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-left: 15px; /* More spacing */
+    transition: var(--transition);
+    color: var(--header-text-color); /* Light icon color */
+    font-size: 1.2rem; /* Larger icon size */
+    box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+}
+
+.social-links a:hover {
+    background-color: var(--secondary);
+    color: white;
+    transform: translateY(-5px) rotate(10deg); /* Lift and slight rotation */
+    box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+}
+
+.hamburger {
+    display: none;
+    cursor: pointer;
+    font-size: 1.8rem;
+    color: var(--header-text-color);
+}
+
+/* ===== HERO SECTION ===== */
+.hero {
+    height: 100vh;
+    background: linear-gradient(135deg, var(--hero-overlay-color-start), var(--hero-overlay-color-end)), 
+                url('https://images.unsplash.com/photo-1497366754035-f200968a6e72?ixlib=rb-4.0.3') center/cover no-repeat fixed; /* Added fixed background */
+    display: flex;
+    align-items: center;
+    color: white;
+    text-align: center;
+    padding-top: var(--header-height);
+    position: relative;
+    overflow: hidden; /* Ensure background animation doesn't spill */
+    animation: backgroundZoomPan 30s ease-in-out infinite alternate; /* Background animation */
+}
+
+.hero-content {
+    max-width: 900px; /* Wider content area */
+    margin: 0 auto;
+    position: relative;
+    z-index: 2; /* Ensure content is above any decorative elements */
+}
+
+/* New: Hero Subheading */
+.hero-subheading-wrap {
+    margin-bottom: 20px;
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: var(--light);
+    min-height: 1.5em; /* Prevent layout shift during typing */
+}
+
+.hero-subheading {
+    display: inline-block;
+    overflow: hidden;
+    white-space: nowrap;
+    border-right: .15em solid orange; /* The caret */
+    width: 0; /* Starts hidden for typing effect */
+    transition: width 0.1s steps(30, end); /* Smooth width expansion */
+}
+
+.cursor {
+    display: inline-block;
+    background-color: white;
+    width: 4px;
+    height: 1.3em;
+    vertical-align: middle;
+    animation: blinkCaret 0.75s step-end infinite;
+}
+
+.hero h1 {
+    font-family: 'Montserrat', sans-serif; /* Different font for H1 */
+    font-size: 4.8rem; /* Much larger hero title */
+    margin-bottom: 20px; /* Reduced margin to bring lines closer */
+    text-transform: uppercase;
+    letter-spacing: 3px; /* Increased letter spacing */
+    text-shadow: 3px 3px 8px rgba(0,0,0,0.4); /* Stronger shadow */
+    font-weight: 800;
+    opacity: 0; /* Hidden for JS animation */
+    transform: translateY(-30px); /* Starts above for animation */
+}
+
+.hero h1:first-of-type {
+    margin-top: 0;
+}
+
+.hero h1:last-of-type {
+    margin-bottom: 30px; /* Add margin after the last h1 */
+}
+
+.hero p {
+    font-size: 1.4rem; /* Larger hero paragraph */
+    margin-bottom: 50px;
+    max-width: 750px;
+    margin-left: auto;
+    margin-right: auto;
+    font-weight: 400;
+    line-height: 1.6;
+    opacity: 0; /* Hidden for JS animation */
+    transform: translateY(30px); /* Starts below for animation */
+    text-shadow: 1px 1px 3px rgba(0,0,0,0.3);
+}
+
+.hero .btn {
+    opacity: 0; /* Hidden for JS animation */
+    transform: translateY(30px); /* Starts below for animation */
+}
+
+/* ===== PRODUCTS SECTION (Perfumes & Sunglasses) ===== */
+.perfumes-section {
+    background-color: palegoldenrod; /* Attractive light blue for perfumes */
+    padding: 100px 0;
+}
+
+.sunglasses-section {
+    background-color: lightskyblue; /* Attractive light purple for sunglasses */
+    padding: 100px 0;
+}
+
+
+.perfume-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); /* Slightly larger cards */
+    gap: 40px; /* More spacing between cards */
+}
+
+/* Modified sunglasses-container to sunglasses-grid */
+.sunglasses-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 40px;
+    justify-content: center; /* Center items horizontally if they don't fill the grid */
+    align-items: flex-start; /* Align items to the start of the grid */
+}
+
+/* Specific rule for centering two sunglasses cards side-by-side */
+.sunglasses-grid:has(.sunglasses-card:nth-child(2):last-child) { /* Selects grid if it has exactly two cards */
+    grid-template-columns: repeat(2, minmax(300px, 1fr)); /* Force two columns */
+    max-width: 700px; /* Limit grid width to roughly two cards + gap, adjust as needed */
+    margin: 0 auto; /* Center the grid container itself */
+}
+
+
+.perfume-card, .sunglasses-card {
+    background: white;
+    border-radius: var(--radius);
+    overflow: hidden;
+    box-shadow: var(--shadow);
+    transition: var(--transition);
+    border: 1px solid rgba(0,0,0,0.05); /* Subtle border */
+    display: flex; /* For better content alignment */
+    flex-direction: column;
+}
+
+.perfume-card:hover, .sunglasses-card:hover {
+    transform: translateY(-15px); /* More pronounced lift */
+    box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+    border-color: var(--accent); /* Highlight on hover */
+}
+
+.perfume-img, .sunglasses-img {
+    height: 320px; /* Taller image areas */
+    background-color: #f5f5f5;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    padding: 20px; /* Padding for images inside container */
+}
+
+.perfume-img img, .sunglasses-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    transition: transform 0.6s ease; /* Slower zoom transition */
+}
+
+.perfume-card:hover .perfume-img img,
+.sunglasses-card:hover .sunglasses-img img {
+    transform: scale(1.1); /* More pronounced zoom */
+}
+
+.perfume-info, .sunglasses-info {
+    padding: 25px; /* More padding */
+    text-align: center;
+    flex-grow: 1; /* Make info section fill available space */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.perfume-info h3, .sunglasses-info h3 {
+    font-size: 1.6rem; /* Larger product titles */
+    color: var(--primary);
+    font-weight: 700;
+}
+
+/* Removed specific sunglasses-container adjustments as it's now a grid */
+
+
+/* ===== DELIVERY SECTION ===== */
+.delivery {
+    background-color: #eaf3f8; /* Lighter background for delivery */
+    padding: 80px 0;
+}
+
+.delivery-content {
+    max-width: 900px;
+    margin: 0 auto;
+    text-align: center;
+    animation: fadeIn 1s ease-out;
+}
+
+.delivery-content h3 {
+    font-size: 2.2rem; /* Larger title */
+    margin-bottom: 25px;
+    color: var(--primary);
+    font-weight: 700;
+}
+
+.delivery-content p {
+    font-size: 1.2rem;
+    margin-bottom: 30px;
+    color: var(--dark);
+    max-width: 700px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.delivery-areas {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px; /* More spacing between badges */
+    margin-top: 40px;
+}
+
+.area-badge {
+    background-color: var(--secondary);
+    color: white;
+    padding: 10px 25px; /* Larger badges */
+    border-radius: 30px;
+    font-size: 1rem; /* Larger text in badges */
+    font-weight: 600;
+    transition: var(--transition);
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+.area-badge:hover {
+    transform: scale(1.1); /* More pronounced scale on hover */
+    background-color: #c0392b;
+    box-shadow: 0 8px 15px rgba(0,0,0,0.2);
+}
+
+/* ===== CONTACT SECTION ===== */
+.contact {
+    background: linear-gradient(to right, var(--primary), #1a2733); /* Darker gradient */
+    color: white;
+    text-align: center;
+    padding: 100px 0;
+}
+
+.contact h2 {
+    color: white;
+}
+
+.contact .section-title:after {
+    background: var(--accent);
+}
+
+.contact-content {
+    max-width: 800px;
+    margin: 0 auto;
+    animation: fadeIn 1s ease-out;
+}
+
+.contact-content p {
+    font-size: 1.2rem;
+    margin-bottom: 40px;
+}
+
+.contact-info {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-top: 50px; /* More spacing */
+    gap: 25px; /* More spacing between contact items */
+}
+
+.contact-item {
+    display: flex;
+    align-items: center;
+    font-size: 1.2rem; /* Larger contact info text */
+    padding: 18px 30px; /* Larger padding */
+    background: rgba(255, 255, 255, 0.15); /* Slightly more visible background */
+    border-radius: 12px; /* More rounded */
+    transition: var(--transition);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+    backdrop-filter: blur(5px); /* Subtle blur effect */
+}
+
+.contact-item:hover {
+    background: rgba(255, 255, 255, 0.25); /* More opaque on hover */
+    transform: translateY(-8px) scale(1.02); /* More pronounced lift and slight scale */
+    box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+}
+
+.contact-item i {
+    margin-right: 12px; /* More spacing */
+    font-size: 1.8rem; /* Larger icons */
+    color: var(--accent);
+}
+
+/* ===== FOOTER ===== */
+footer {
+    background-color: var(--dark);
+    color: var(--light);
+    padding: 60px 0 30px; /* More padding */
+}
+
+.footer-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); /* Adjusted minmax */
+    gap: 40px; /* More spacing */
+}
+
+.footer-logo {
+    margin-bottom: 25px;
+}
+
+.footer-logo img {
+    max-height: 70px;
+}
+
+.footer-about p {
+    margin: 20px 0;
+    font-size: 1rem;
+    line-height: 1.8;
+}
+
+.footer-section h3 {
+    font-size: 1.5rem; /* Larger footer titles */
+    margin-bottom: 25px;
+    color: white;
+    position: relative;
+    padding-bottom: 12px;
+}
+
+.footer-section h3:after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 60px; /* Longer underline */
+    height: 4px; /* Thicker underline */
+    background: var(--secondary);
+    border-radius: 2px;
+}
+
+.footer-links li {
+    margin-bottom: 12px;
+}
+
+.footer-links a {
+    transition: var(--transition);
+    display: inline-block;
+    font-size: 1rem;
+}
+
+.footer-links a:hover {
+    color: var(--accent);
+    transform: translateX(8px); /* More pronounced slide */
+}
+
+.contact-details li {
+    margin-bottom: 18px; /* More spacing */
+    display: flex;
+    align-items: flex-start;
+    font-size: 1rem;
+}
+
+.contact-details i {
+    margin-right: 12px;
+    color: var(--accent);
+    min-width: 25px; /* Ensure icon has enough space */
+    font-size: 1.2rem;
+}
+
+.copyright {
+    margin-top: 60px; /* More spacing */
+    padding-top: 25px;
+    border-top: 1px solid rgba(255,255,255,0.15); /* Slightly more visible border */
+    width: 100%;
+    text-align: center;
+    font-size: 0.95rem;
+    color: var(--gray);
+}
+
+/* ===== ANIMATIONS ===== */
+@keyframes fadeInDown {
+    from {
+        opacity: 0;
+        transform: translateY(-30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+/* Header slide-in animation */
+@keyframes slideInDown {
+    from {
+        transform: translateY(-100%);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+/* Background Zoom and Pan */
+@keyframes backgroundZoomPan {
+    0% {
+        background-size: 110% auto;
+        background-position: center center;
+    }
+    50% {
+        background-size: 100% auto;
+        background-position: center bottom;
+    }
+    100% {
+        background-size: 110% auto;
+        background-position: center center;
+    }
+}
+
+/* Typing Effect for Subheading */
+@keyframes typing {
+    from { width: 0 }
+    to { width: 100% }
+}
+
+@keyframes blinkCaret {
+    from, to { border-color: transparent }
+    50% { border-color: white }
+}
+
+
+/* Applied to elements you want to animate on scroll */
+.fade-in-up {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+
+.fade-in-up.active {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Animation for hero content elements using JS */
+.animate-hero-text, .animate-hero-btn {
+    opacity: 0;
+    transform: translateY(30px);
+}
+
+/* Specific animations for H1 */
+.hero h1.animate-hero-text {
+    transform: translateY(-30px);
+}
+
+
+/* ===== RESPONSIVE DESIGN ===== */
+@media (max-width: 992px) {
+    .hero h1 {
+        font-size: 3.5rem;
+        letter-spacing: 2px;
+    }
+    .hero p {
+        font-size: 1.2rem;
+    }
+    .section-title h2 {
+        font-size: 2.8rem;
+    }
+    /* Change phone group alignment to center for better stacking */
+    .phone-group {
+        justify-content: center; /* Center phone numbers on smaller screens */
+    }
+    .contact-info {
+        gap: 10px; /* Reduce gap to allow more space for wrapping */
+        justify-content: center; /* Center items when they wrap */
+    }
+    .social-links {
+        justify-content: center; /* Center social links when they wrap */
+        width: 100%; /* Take full width when wrapped */
+        margin-top: 10px; /* Add some space above social links if they wrap */
+    }
+    .social-links a {
+        width: 38px;
+        height: 38px;
+        margin: 0 8px; /* Adjust margin for centering */
+    }
+    .perfume-grid {
+        grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+        gap: 25px;
+    }
+    .hero-subheading-wrap {
+        font-size: 1.3rem;
+    }
+    .sunglasses-grid { /* Responsive adjustment for sunglasses grid */
+        grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+        gap: 25px;
+    }
+    /* Adjusted for two sunglasses cards on smaller screens if they fit */
+    .sunglasses-grid:has(.sunglasses-card:nth-child(2):last-child) {
+        max-width: 600px; /* Adjust max-width for two cards on smaller screens */
+    }
+}
+
+@media (max-width: 768px) {
+    .header-container {
+        flex-wrap: wrap;
+        height: auto;
+        padding: 15px 0;
+        justify-content: center;
+    }
+    
+    .logo {
+        width: 100%;
+        justify-content: center;
+        text-align: center;
+        margin-bottom: 15px;
+    }
+    
+    .contact-info {
+        margin-top: 15px;
+        width: 100%;
+        flex-direction: column; /* Explicitly stack phone group and social links */
+        gap: 10px; /* Keep reduced gap */
+    }
+
+    .phone-group {
+        flex-direction: column; /* Revert to column for very small screens if preferred, or keep row and let them wrap */
+        align-items: center; /* Center them when stacked */
+        gap: 8px; /* Smaller gap when stacked */
+        width: 100%;
+    }
+    
+    .hero {
+        height: auto;
+        min-height: 70vh;
+        padding: 120px 0 80px;
+    }
+
+    .hero h1 {
+        font-size: 2.8rem;
+        letter-spacing: 1.5px;
+    }
+    
+    .hero p {
+        font-size: 1rem;
+    }
+
+    .hero-subheading-wrap {
+        font-size: 1.1rem;
+    }
+
+    .section-title h2 {
+        font-size: 2.2rem;
+    }
+    
+    .footer-container {
+        grid-template-columns: 1fr;
+        text-align: center;
+    }
+
+    .footer-section h3:after {
+        left: 50%;
+        transform: translateX(-50%);
+    }
+
+    .footer-links, .contact-details {
+        padding: 0;
+        text-align: center;
+    }
+
+    .contact-details li {
+        justify-content: center;
+    }
+    
+    .perfume-img, .sunglasses-img {
+        height: 280px;
+    }
+    .contact-item {
+        font-size: 1.1rem;
+        padding: 15px 25px;
+    }
+    .sunglasses-grid { /* Responsive adjustment for sunglasses grid */
+        grid-template-columns: 1fr; /* Stack sunglasses on smaller screens */
+        max-width: none; /* Remove max-width when stacking */
+    }
+}
+
+@media (max-width: 576px) {
+    .logo-img {
+        height: 55px;
+        margin-right: 10px;
+    }
+    .logo-text .company-name {
+        font-size: 1.6rem;
+    }
+    .logo-text .tagline {
+        font-size: 0.85rem;
+    }
+    
+    .hero {
+        padding-top: 140px;
+    }
+    
+    .hero h1 {
+        font-size: 2rem;
+        letter-spacing: 1px;
+        margin-bottom: 10px;
+    }
+    .hero h1:last-of-type {
+        margin-bottom: 25px;
+    }
+    
+    .hero p {
+        font-size: 0.95rem;
+    }
+    
+    .hero-subheading-wrap {
+        font-size: 0.9rem;
+    }
+
+    .section-title h2 {
+        font-size: 1.8rem;
+    }
+    
+    .contact-item {
+        width: 100%;
+        justify-content: center;
+        flex-direction: column; /* Stack icon and text for smaller screens */
+        text-align: center;
+    }
+
+    .contact-item i {
+        margin-right: 0;
+        margin-bottom: 5px;
+    }
+    
+    .perfume-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .phone-group div {
+        font-size: 0.9rem;
+    }
+    
+    .perfume-img, .sunglasses-img {
+        height: 220px;
+    }
+    .btn {
+        padding: 10px 25px;
+        font-size: 0.9rem;
+    }
+    section {
+        padding: 60px 0;
+    }
+    .delivery-content h3 {
+        font-size: 1.8rem;
+    }
+    .delivery-content p {
+        font-size: 1rem;
+    }
+    .area-badge {
+        padding: 8px 20px;
+        font-size: 0.85rem;
+    }
