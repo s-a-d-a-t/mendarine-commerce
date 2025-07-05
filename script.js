@@ -1,119 +1,202 @@
-// Simple JavaScript for smooth scrolling
-document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-    anchor.addEventListener('click', function (e) {
-        e.preventDefault();
-        const targetId = this.getAttribute('href');
-        const targetElement = document.querySelector(targetId);
-        
-        if (targetElement) {
-            // Get header height for offset, considering dynamic height
-            const headerOffset = document.querySelector('header').offsetHeight; 
-            const elementPosition = targetElement.getBoundingClientRect().top;
-            const offsetPosition = elementPosition + window.scrollY - headerOffset;
-
-            window.scrollTo({
-                top: offsetPosition,
-                behavior: 'smooth'
-            });
-        }
-    });
-});
-
-// Header shadow on scroll and dynamic header height
-window.addEventListener('scroll', function() {
-    const header = document.querySelector('header');
-    if (window.scrollY > 50) {
-        header.classList.add('scrolled'); // Add class for scrolled state
-    } else {
-        header.classList.remove('scrolled'); // Remove class
-    }
-});
-
-// Intersection Observer for fade-in-up animation on scroll
-const faders = document.querySelectorAll('.fade-in-up');
-
-const appearOptions = {
-    threshold: 0.3, // When 30% of the item is visible
-    rootMargin: "0px 0px -50px 0px" // Start animation 50px before it reaches the bottom of the viewport
-};
-
-const appearOnScroll = new IntersectionObserver(function(entries, appearOnScroll) {
-    entries.forEach(entry => {
-        if (!entry.isIntersecting) {
-            return;
-        } else {
-            entry.target.classList.add('active');
-            appearOnScroll.unobserve(entry.target); // Stop observing once animated
-        }
-    });
-}, appearOptions);
-
-faders.forEach(fader => {
-    appearOnScroll.observe(fader);
-});
-
-// Hero Section Typing Animation and Element Entry
 document.addEventListener('DOMContentLoaded', () => {
+    // Mobile menu toggle
+    const mobileToggle = document.querySelector('.mobile-toggle');
+    const navMenu = document.querySelector('.nav-menu');
+    
+    mobileToggle.addEventListener('click', () => {
+        navMenu.classList.toggle('active');
+    });
+    
+    // Smooth scrolling
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+            e.preventDefault();
+            const targetId = this.getAttribute('href');
+            const targetElement = document.querySelector(targetId);
+            
+            if (targetElement) {
+                const headerOffset = document.querySelector('header').offsetHeight;
+                const elementPosition = targetElement.getBoundingClientRect().top;
+                const offsetPosition = elementPosition + window.scrollY - headerOffset;
+                
+                window.scrollTo({
+                    top: offsetPosition,
+                    behavior: 'smooth'
+                });
+                
+                // Close mobile menu if open
+                if (navMenu.classList.contains('active')) {
+                    navMenu.classList.remove('active');
+                }
+            }
+        });
+    });
+    
+    // Header shadow on scroll
+    window.addEventListener('scroll', function() {
+        const header = document.querySelector('header');
+        if (window.scrollY > 50) {
+            header.style.boxShadow = '0 5px 20px rgba(0,0,0,0.2)';
+        } else {
+            header.style.boxShadow = 'none';
+        }
+    });
+    
+    // Intersection Observer for animations
+    const faders = document.querySelectorAll('.fade-in-up');
+    const appearOptions = {
+        threshold: 0.3,
+        rootMargin: "0px 0px -50px 0px"
+    };
+    
+    const appearOnScroll = new IntersectionObserver(function(entries, appearOnScroll) {
+        entries.forEach(entry => {
+            if (!entry.isIntersecting) return;
+            entry.target.classList.add('active');
+            appearOnScroll.unobserve(entry.target);
+        });
+    }, appearOptions);
+    
+    faders.forEach(fader => {
+        appearOnScroll.observe(fader);
+    });
+    
+    // Hero typing animation
     const subheadingElement = document.getElementById('hero-subheading');
     const textToType = "Your Trusted Source for Quality & Style";
     let i = 0;
-    const typingSpeed = 70; // milliseconds per character
-
+    const typingSpeed = 70;
+    
     function typeWriter() {
         if (i < textToType.length) {
             subheadingElement.innerHTML += textToType.charAt(i);
-            subheadingElement.style.width = 'auto'; // Let width adjust during typing
             i++;
             setTimeout(typeWriter, typingSpeed);
         } else {
-            // After typing, reset width to 100% to fill container for smooth animation
-            subheadingElement.style.width = '100%'; 
-            document.querySelector('.cursor').style.display = 'none'; // Hide cursor after typing
+            document.querySelector('.cursor').style.display = 'none';
             animateHeroContent();
         }
     }
-
+    
     function animateHeroContent() {
-        const heroH1s = document.querySelectorAll('.hero h1.animate-hero-text');
-        const heroP = document.querySelector('.hero p.animate-hero-text');
-        const heroBtn = document.querySelector('.hero .btn.animate-hero-btn');
-
-        // Animate first H1
-        setTimeout(() => {
-            if (heroH1s[0]) {
-                heroH1s[0].style.transition = 'opacity 1s ease-out, transform 1s ease-out';
-                heroH1s[0].style.opacity = '1';
-                heroH1s[0].style.transform = 'translateY(0)';
+        const heroElements = document.querySelectorAll('.animate-hero-text, .animate-hero-btn');
+        
+        heroElements.forEach((el, index) => {
+            setTimeout(() => {
+                el.style.transition = 'opacity 1s ease-out, transform 1s ease-out';
+                el.style.opacity = '1';
+                el.style.transform = 'translateY(0)';
+            }, 500 + (index * 300));
+        });
+    }
+    
+    // Start the typing animation
+    typeWriter();
+    
+    // Set active navigation based on scroll position
+    const sections = document.querySelectorAll('section');
+    const navLinks = document.querySelectorAll('.nav-menu a');
+    
+    window.addEventListener('scroll', () => {
+        let current = '';
+        
+        sections.forEach(section => {
+            const sectionTop = section.offsetTop;
+            const sectionHeight = section.clientHeight;
+            
+            if (pageYOffset >= (sectionTop - 200)) {
+                current = section.getAttribute('id');
             }
-        }, 500); // Delay after subheading is done
-
-        // Animate second H1
-        setTimeout(() => {
-            if (heroH1s[1]) {
-                heroH1s[1].style.transition = 'opacity 1s ease-out, transform 1s ease-out';
-                heroH1s[1].style.opacity = '1';
-                heroH1s[1].style.transform = 'translateY(0)';
+        });
+        
+        navLinks.forEach(link => {
+            link.classList.remove('active');
+            if (link.getAttribute('href') === `#${current}`) {
+                link.classList.add('active');
             }
-        }, 1000); // Further delay
+        });
+    });
 
-        // Animate paragraph
-        setTimeout(() => {
-            if (heroP) {
-                heroP.style.transition = 'opacity 1s ease-out, transform 1s ease-out';
-                heroP.style.opacity = '1';
-                heroP.style.transform = 'translateY(0)';
-            }
-        }, 1500); // Further delay
+    // Video play/pause functionality
+    const video = document.querySelector('.hero-video');
+    const playBtn = document.querySelector('.video-play-btn');
 
-        // Animate button
-        setTimeout(() => {
-            if (heroBtn) {
-                heroBtn.style.transition = 'opacity 1s ease-out, transform 1s ease-out';
-                heroBtn.style.opacity = '1';
-                heroBtn.style.transform = 'translateY(0)';
+    if (video && playBtn) {
+        playBtn.addEventListener('click', () => {
+            if (video.paused) {
+                video.play();
+                playBtn.innerHTML = '<i class="fas fa-pause"></i>';
+            } else {
+                video.pause();
+                playBtn.innerHTML = '<i class="fas fa-play"></i>';
             }
-        }, 2000); // Further delay
+        });
+
+        // Update button icon if video state changes (e.g., by user controls)
+        video.addEventListener('play', () => {
+            playBtn.innerHTML = '<i class="fas fa-pause"></i>';
+        });
+
+        video.addEventListener('pause', () => {
+            playBtn.innerHTML = '<i class="fas fa-play"></i>';
+        });
     }
 
-    typeWriter(); // Start the typing animation
+    // Product Detail Modal functionality
+    const productDetailModal = document.getElementById('productDetailModal');
+    const closeProductDetailModalBtn = document.getElementById('closeProductDetailModal');
+    const productDetailContent = document.getElementById('productDetailContent');
+
+    function openModal(modal) {
+        modal.classList.add('show');
+        document.body.style.overflow = 'hidden'; // Prevent scrolling background
+    }
+
+    function closeModal(modal) {
+        modal.classList.remove('show');
+        document.body.style.overflow = ''; // Restore scrolling
+    }
+
+    if (closeProductDetailModalBtn) {
+        closeProductDetailModalBtn.addEventListener('click', () => closeModal(productDetailModal));
+    }
+
+    window.addEventListener('click', (event) => {
+        if (event.target === productDetailModal) {
+            closeModal(productDetailModal);
+        }
+    });
+
+    // Function to open product detail modal
+    function openProductDetail(product) {
+        productDetailContent.innerHTML = `
+            <div class="product-detail-header">
+                <img src="${product.image}" alt="${product.title}" class="product-detail-image">
+                <div class="product-detail-info">
+                    <h2 class="product-detail-title">${product.title}</h2>
+                    <p class="product-detail-description">${product.description}</p>
+                    <a href="#contact" class="btn" style="margin-top: 30px;">Order Now</a>
+                </div>
+            </div>
+        `;
+        openModal(productDetailModal);
+    }
+
+    // Add click listeners to all product cards
+    const productCards = document.querySelectorAll('.perfume-card, .sunglasses-card, .beauty-skincare-card');
+    productCards.forEach(card => {
+        card.addEventListener('click', () => {
+            const product = {
+                title: card.dataset.title,
+                image: card.dataset.image,
+                description: card.dataset.description
+            };
+            openProductDetail(product);
+        });
+    });
+    
+    // Add animation delays based on index
+    document.querySelectorAll('.perfume-card, .sunglasses-card, .beauty-skincare-card, .area-badge').forEach((el, index) => {
+        el.style.setProperty('--i', index);
+    });
 });

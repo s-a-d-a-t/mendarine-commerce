@@ -1,28 +1,61 @@
-/* ===== VARIABLES ===== */
 :root {
-    --primary: #2c3e50;
-    --secondary: #e74c3c;
-    --accent: #3498db;
-    --light: #ecf0f1;
-    --dark: #2c3e50;
-    --gray: #95a5a6;
-    --transition: all 0.4s ease-in-out; /* Slightly longer and smoother transition */
-    --shadow: 0 8px 25px rgba(0,0,0,0.15); /* More pronounced shadow */
-    --radius: 12px; /* Slightly more rounded corners */
-    --header-height: 90px; /* Increased header height */
-
-    /* New hero-specific colors */
-    --hero-overlay-color-start: rgba(44, 62, 80, 0.95);
-    --hero-overlay-color-end: rgba(52, 152, 219, 0.9);
-
-    /* New header colors */
-    --header-bg-start: #2c3e50; /* Dark blue */
-    --header-bg-end: #34495e;   /* Slightly lighter dark blue */
-    --header-text-color: #ecf0f1; /* Light gray for text */
-    --header-accent-color: #f39c12; /* Orange for accents */
+    --primary: #1a73e8;
+    --secondary: #00b4d8;
+    --accent: #ff6b6b;
+    --light: #f8f9fa;
+    --dark: #0a192f;
+    --gray: #6c757d;
+    --transition: all 0.4s ease;
+    --shadow: 0 8px 25px rgba(0,0,0,0.15);
+    --radius: 12px;
+    --header-height: 80px;
+    --hero-overlay-color-start: rgba(26, 115, 232, 0.9);
+    --hero-overlay-color-end: rgba(0, 180, 216, 0.85);
+    --header-bg: rgba(10, 25, 47, 0.95);
+    --header-text-color: #ffffff;
+    --header-accent-color: #ff6b6b;
+    --nav-hover: #00b4d8;
+    
+    /* New color variables for sections */
+    --perfume-section-bg: linear-gradient(135deg, #f8d7da, #ffd8e4, #fde2e4);
+    --sunglasses-section-bg: linear-gradient(135deg, #e0f7fa, #d1f2eb, #d0ece7);
+    --beauty-section-bg: linear-gradient(135deg, #f5e3ff, #e8daf7, #e2d1f9);
+    --card-hover-glow: 0 0 20px rgba(255, 107, 107, 0.6);
 }
 
-/* ===== BASE STYLES ===== */
+/* Floating animation for product cards */
+@keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-15px); }
+}
+
+/* Gradient pulse for buttons */
+@keyframes pulse {
+    0% { box-shadow: 0 0 0 0 rgba(26, 115, 232, 0.7); }
+    70% { box-shadow: 0 0 0 15px rgba(26, 115, 232, 0); }
+    100% { box-shadow: 0 0 0 0 rgba(26, 115, 232, 0); }
+}
+
+/* Gradient animation */
+@keyframes gradient {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+/* Glow animation */
+@keyframes glow {
+    0% { box-shadow: 0 0 5px var(--primary); }
+    50% { box-shadow: 0 0 20px var(--accent); }
+    100% { box-shadow: 0 0 5px var(--primary); }
+}
+
+/* Rotate animation */
+@keyframes rotate {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
 * {
     margin: 0;
     padding: 0;
@@ -30,11 +63,13 @@
 }
 
 body {
-    font-family: 'Poppins', sans-serif; /* Changed font for a modern look */
-    line-height: 1.7; /* Increased line height for readability */
+    font-family: 'Poppins', sans-serif;
+    line-height: 1.7;
     color: var(--dark);
-    background-color: #f0f2f5; /* Lighter background */
+    background-color: #f8fafc;
     overflow-x: hidden;
+    padding-top: var(--header-height);
+    background: linear-gradient(135deg, #f5f7fa 0%, #e4edf9 100%);
 }
 
 a {
@@ -42,201 +77,78 @@ a {
     color: inherit;
 }
 
-ul {
-    list-style: none;
-}
-
-img {
-    max-width: 100%;
-    display: block;
-}
-/* ===== NEW SECTION: Beauty & Skincare ===== */
-.beauty-skincare-section {
-    background-color: #fce4ec; /* Attractive light pink */
-    padding: 100px 0;
-}
-
-.beauty-skincare-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-    gap: 40px;
-}
-
-.beauty-skincare-card {
-    background: white;
-    border-radius: var(--radius);
-    overflow: hidden;
-    box-shadow: var(--shadow);
-    transition: var(--transition);
-    border: 1px solid rgba(0,0,0,0.05);
-    display: flex;
-    flex-direction: column;
-}
-
-.beauty-skincare-card:hover {
-    transform: translateY(-15px);
-    box-shadow: 0 20px 40px rgba(0,0,0,0.2);
-    border-color: #e91e63; /* A vibrant pink accent color for this section */
-}
-
-.beauty-skincare-img {
-    height: 320px;
-    background-color: #fdf2f5; /* Lighter background for images */
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    overflow: hidden;
-    padding: 20px;
-}
-
-.beauty-skincare-img img {
-    width: 100%;
-    height: 100%;
-    object-fit: contain;
-    transition: transform 0.6s ease;
-}
-
-.beauty-skincare-card:hover .beauty-skincare-img img {
-    transform: scale(1.1);
-}
-
-.beauty-skincare-info {
-    padding: 25px;
-    text-align: center;
-    flex-grow: 1;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.beauty-skincare-info h3 {
-    font-size: 1.6rem;
-    color: var(--primary);
-    font-weight: 700;
-}
-
-
-/* Adjustments for responsiveness on new section */
-@media (max-width: 768px) {
-    .beauty-skincare-grid {
-        grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-        gap: 25px;
-    }
-    .beauty-skincare-img {
-        height: 280px;
-    }
-}
-
-@media (max-width: 576px) {
-    .beauty-skincare-grid {
-        grid-template-columns: 1fr;
-    }
-    .beauty-skincare-img {
-        height: 220px;
-    }
-}
-
 .container {
-    width: 92%; /* Slightly wider container */
-    max-width: 1280px; /* Increased max-width */
+    width: 92%;
+    max-width: 1280px;
     margin: 0 auto;
-    padding: 0 20px; /* Increased padding */
+    padding: 0 20px;
 }
 
 .btn {
     display: inline-block;
-    padding: 14px 35px; /* Larger button */
-    background-color: var(--secondary);
+    padding: 14px 35px;
+    background: linear-gradient(135deg, var(--primary), var(--secondary));
     color: white;
     border-radius: 50px;
-    font-weight: 700; /* Bolder text */
+    font-weight: 700;
     text-transform: uppercase;
-    letter-spacing: 1.5px; /* Increased letter spacing */
+    letter-spacing: 1.5px;
     transition: var(--transition);
     border: none;
     cursor: pointer;
     box-shadow: var(--shadow);
     position: relative;
-    overflow: hidden; /* For hover effect */
+    overflow: hidden;
     z-index: 1;
+    font-size: 1.1rem;
+    animation: pulse 2s infinite;
 }
 
 .btn:hover {
-    background-color: #c0392b;
-    transform: translateY(-5px); /* More pronounced lift */
+    background: linear-gradient(135deg, var(--secondary), var(--primary));
+    transform: translateY(-5px) scale(1.05);
     box-shadow: 0 18px 35px rgba(0,0,0,0.2);
+    animation: none;
 }
-
-.btn::before { /* Hover effect */
-    content: '';
-    position: absolute;
-    top: 0;
-    left: -100%;
-    width: 100%;
-    height: 100%;
-    background: rgba(255, 255, 255, 0.2);
-    transition: all 0.3s ease;
-    z-index: -1;
-}
-
-.btn:hover::before {
-    left: 0;
-}
-
 
 section {
-    padding: 100px 0; /* More vertical spacing */
+    padding: 100px 0;
 }
 
 .section-title {
     text-align: center;
-    margin-bottom: 70px; /* More spacing below title */
+    margin-bottom: 70px;
     position: relative;
-    animation: fadeIn 1s ease-out; /* Fade in animation for titles */
 }
 
 .section-title h2 {
-    font-size: 3rem; /* Larger title font */
+    font-size: 2.8rem;
     color: var(--primary);
     text-transform: uppercase;
-    margin-bottom: 20px; /* More space below h2 */
-    font-weight: 800; /* Extra bold */
+    margin-bottom: 20px;
+    font-weight: 800;
     position: relative;
-    display: inline-block; /* To allow pseudo-elements to align correctly */
+    display: inline-block;
 }
 
-.section-title h2::before,
 .section-title h2::after {
     content: '';
     position: absolute;
-    height: 3px;
-    background: var(--secondary);
-    bottom: -10px;
-    width: 30px;
-    transition: var(--transition);
+    height: 4px;
+    background: linear-gradient(90deg, var(--primary), var(--accent));
+    bottom: -15px;
+    width: 80px;
+    left: 50%;
+    transform: translateX(-50%);
+    border-radius: 2px;
+    animation: gradient 3s ease infinite;
+    background-size: 200% 200%;
 }
 
-.section-title h2::before {
-    left: -40px;
-}
-
-.section-title h2::after {
-    right: -40px;
-}
-
-.section-title:hover h2::before {
-    left: 0;
-}
-
-.section-title:hover h2::after {
-    right: 0;
-}
-
-
-/* ===== HEADER & NAVIGATION ===== */
+/* HEADER STYLES */
 header {
-    background: linear-gradient(to right, var(--header-bg-start), var(--header-bg-end)); /* Gradient background */
-    box-shadow: var(--shadow);
+    background: var(--header-bg);
+    box-shadow: 0 5px 20px rgba(0,0,0,0.2);
     position: fixed;
     width: 100%;
     top: 0;
@@ -244,22 +156,16 @@ header {
     height: var(--header-height);
     display: flex;
     align-items: center;
-    transition: all 0.3s ease-in-out; /* Smoother transition for height change */
-    transform: translateY(-100%); /* Start off-screen for animation */
-    animation: slideInDown 0.8s ease-out forwards; /* Slide in animation */
-}
-
-/* Header on scroll */
-header.scrolled {
-    height: 70px; /* Shrink header on scroll */
-    box-shadow: 0 5px 20px rgba(0,0,0,0.2);
+    backdrop-filter: blur(8px);
+    transition: all 0.3s ease;
+    border-bottom: 2px solid rgba(255, 255, 255, 0.1);
 }
 
 .header-container {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    width: 100%; /* Ensure it spans full width of container */
+    width: 100%;
 }
 
 .logo {
@@ -275,325 +181,547 @@ header.scrolled {
 }
 
 .logo-link:hover {
-    transform: scale(1.03); /* Subtle scale on logo hover */
+    transform: scale(1.03);
 }
 
 .logo-img {
-    height: 70px; /* Larger logo image */
-    width: auto;
-    border-radius: 50%; /* Make logo round */
+    height: 60px;
+    width: 60px;
+    border-radius: 50%;
     margin-right: 15px;
     object-fit: cover;
-    box-shadow: 0 0 10px rgba(0,0,0,0.2);
-    border: 3px solid var(--header-accent-color); /* Colorful border */
+    border: 3px solid var(--header-accent-color);
     transition: border-color 0.3s ease;
+    box-shadow: 0 0 15px rgba(255, 107, 107, 0.5);
 }
 
 .logo-link:hover .logo-img {
-    border-color: var(--secondary); /* Change border color on hover */
-}
-
-.logo-text {
-    display: flex;
-    flex-direction: column;
+    border-color: var(--secondary);
+    animation: rotate 2s linear infinite;
 }
 
 .logo-text .company-name {
-    font-size: 2rem; /* Larger company name */
-    font-weight: 800; /* Bolder company name */
-    color: var(--header-text-color); /* Light text color */
-    line-height: 1.1;
+    font-size: 1.8rem;
+    font-weight: 800;
+    color: var(--header-text-color);
     text-shadow: 1px 1px 3px rgba(0,0,0,0.3);
+    letter-spacing: 1px;
 }
 
 .logo-text .company-name span {
-    color: var(--header-accent-color); /* Accent color for span */
+    color: var(--header-accent-color);
     transition: color 0.3s ease;
 }
 
 .logo-link:hover .logo-text .company-name span {
-    color: var(--secondary); /* Change span color on hover */
+    color: var(--secondary);
 }
 
 .logo-text .tagline {
-    font-size: 0.95rem; /* Slightly larger tagline */
-    color: rgba(255, 255, 255, 0.7); /* Lighter tagline */
-    margin-top: 5px;
+    font-size: 0.85rem;
+    color: rgba(255, 255, 255, 0.7);
+    margin-top: 3px;
     font-style: italic;
 }
 
-.contact-info {
+/* Navigation */
+.nav-menu {
     display: flex;
     align-items: center;
-    gap: 30px; /* Space between phone group and social links */
-    /* Added flex-wrap for responsiveness */
-    flex-wrap: wrap; /* Allows items to wrap to the next line */
-    justify-content: flex-end; /* Align items to the end by default */
 }
 
-.phone-group {
-    display: flex; /* Already flex, but ensure it's row by default */
-    flex-direction: row; /* Change to row to display horizontally */
-    align-items: center; /* Vertically align items */
-    gap: 15px; /* Add some space between phone numbers */
-    flex-wrap: wrap; /* Allow numbers to wrap if space is constrained */
-    justify-content: flex-end; /* Align to the right for desktop */
-    color: var(--header-text-color); /* Light text color */
+.nav-menu ul {
+    display: flex;
+    list-style: none;
+    gap: 30px;
+}
+
+.nav-menu li a {
+    color: var(--header-text-color);
     font-weight: 600;
-    line-height: 1.4;
-    /* Ensure it doesn't take up more space than needed */
-    flex-shrink: 0;
+    font-size: 1.1rem;
+    padding: 8px 12px;
+    border-radius: 4px;
+    transition: all 0.3s ease;
+    position: relative;
 }
 
-.phone-item {
+.nav-menu li a:hover {
+    color: var(--nav-hover);
+}
+
+.nav-menu li a::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: 0;
+    left: 0;
+    background: linear-gradient(90deg, var(--nav-hover), var(--accent));
+    transition: width 0.3s ease;
+}
+
+.nav-menu li a:hover::after {
+    width: 100%;
+}
+
+.nav-menu li a.active {
+    color: var(--nav-hover);
+}
+
+.nav-menu li a.active::after {
+    width: 100%;
+}
+
+.header-icons {
     display: flex;
     align-items: center;
-    transition: transform 0.2s ease;
-    white-space: nowrap; /* Prevent phone numbers from wrapping */
+    gap: 20px;
 }
 
-.phone-item:hover {
-    transform: translateX(-5px); /* Slight slide on hover */
-    color: var(--header-accent-color);
+.header-icons a {
+    color: var(--header-text-color);
+    font-size: 1.4rem;
+    transition: all 0.3s ease;
+    position: relative;
 }
 
-.phone-item i {
-    margin-right: 8px;
-    color: var(--header-accent-color); /* Accent color for icons */
-    font-size: 1.1rem;
+.header-icons a:hover {
+    color: var(--nav-hover);
+    transform: translateY(-3px);
 }
 
-.social-links {
-    display: flex;
-    /* flex-shrink: 0; */ /* Allow social links to shrink if needed */
+.cart-icon {
+    position: relative;
 }
 
-.social-links a {
-    width: 40px; /* Larger social icons */
-    height: 40px;
+.cart-count {
+    position: absolute;
+    top: -8px;
+    right: -10px;
+    background-color: var(--accent);
+    color: white;
+    font-size: 0.7rem;
+    font-weight: 700;
+    width: 20px;
+    height: 20px;
     border-radius: 50%;
-    background-color: rgba(255, 255, 255, 0.15); /* Slightly transparent background */
     display: flex;
     align-items: center;
     justify-content: center;
-    margin-left: 15px; /* More spacing */
-    transition: var(--transition);
-    color: var(--header-text-color); /* Light icon color */
-    font-size: 1.2rem; /* Larger icon size */
-    box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
 }
 
-.social-links a:hover {
-    background-color: var(--secondary);
-    color: white;
-    transform: translateY(-5px) rotate(10deg); /* Lift and slight rotation */
-    box-shadow: 0 8px 20px rgba(0,0,0,0.3);
-}
-
-.hamburger {
+.mobile-toggle {
     display: none;
-    cursor: pointer;
     font-size: 1.8rem;
     color: var(--header-text-color);
+    cursor: pointer;
 }
 
-/* ===== HERO SECTION ===== */
+/* HERO SECTION */
 .hero {
     height: 100vh;
-    background: linear-gradient(135deg, var(--hero-overlay-color-start), var(--hero-overlay-color-end)), 
-                url('https://images.unsplash.com/photo-1497366754035-f200968a6e72?ixlib=rb-4.0.3') center/cover no-repeat fixed; /* Added fixed background */
+    min-height: 700px;
     display: flex;
     align-items: center;
     color: white;
     text-align: center;
-    padding-top: var(--header-height);
     position: relative;
-    overflow: hidden; /* Ensure background animation doesn't spill */
-    animation: backgroundZoomPan 30s ease-in-out infinite alternate; /* Background animation */
+    overflow: hidden;
+    background: linear-gradient(135deg, var(--hero-overlay-color-start), var(--hero-overlay-color-end));
+}
+
+.hero::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiPjxkZWZzPjxwYXR0ZXJuIGlkPSJwYXR0ZXJuIiB3aWR0aD0iNDAiIGhlaWdodD0iNDAiIHBhdHRlcm5Vbml0cz0idXNlclNwYWNlT25Vc2UiIHBhdHRlcm5UcmFuc2Zvcm09InJvdGF0ZSg0NSkiPjxjaXJjbGUgY3g9IjIwIiBjeT0iMjAiIHI9IjEiIGZpbGw9IiNmZmYiIGZpbGwtb3BhY2l0eT0iMC4xIi8+PC9wYXR0ZXJuPjwvZGVmcz48cmVjdCB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWxsPSJ1cmwoI3BhdHRlcm4pIiBvcGFjaXR5PSIwLjIiLz48L3N2Zz4=');
+    opacity: 0.3;
+}
+
+.hero-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.hero-video-container {
+    width: 45%;
+    height: 0;
+    padding-bottom: 45%;
+    position: relative;
+    overflow: hidden;
+    border-radius: 50%;
+    box-shadow: 0 0 40px rgba(0,0,0,0.6), inset 0 0 20px rgba(255,255,255,0.2);
+    border: 8px solid transparent;
+    background: linear-gradient(45deg, var(--primary), var(--secondary), var(--accent)) border-box;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    transition: all 0.5s ease;
+    animation: glow 3s infinite;
+}
+
+.hero-video-container:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 60px rgba(0,0,0,0.8), inset 0 0 30px rgba(255,255,255,0.3);
+    animation: glow 1.5s infinite;
+}
+
+.hero-video-frame {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    overflow: hidden;
+}
+
+.hero-video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.video-overlay {
+    display: none;
+}
+
+.video-play-btn {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 80px;
+    height: 80px;
+    background: rgba(255, 255, 255, 0.8);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 2;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+}
+
+.video-play-btn:hover {
+    background: var(--accent);
+    transform: translate(-50%, -50%) scale(1.1);
+}
+
+.video-play-btn i {
+    font-size: 30px;
+    color: var(--primary);
+}
+
+.video-play-btn:hover i {
+    color: white;
 }
 
 .hero-content {
-    max-width: 900px; /* Wider content area */
-    margin: 0 auto;
-    position: relative;
-    z-index: 2; /* Ensure content is above any decorative elements */
+    max-width: 50%;
+    text-align: left;
+    padding-right: 20px;
+    flex-grow: 1;
 }
 
-/* New: Hero Subheading */
 .hero-subheading-wrap {
     margin-bottom: 20px;
     font-size: 1.5rem;
     font-weight: 600;
     color: var(--light);
-    min-height: 1.5em; /* Prevent layout shift during typing */
-}
-
-.hero-subheading {
-    display: inline-block;
-    overflow: hidden;
-    white-space: nowrap;
-    border-right: .15em solid orange; /* The caret */
-    width: 0; /* Starts hidden for typing effect */
-    transition: width 0.1s steps(30, end); /* Smooth width expansion */
-}
-
-.cursor {
-    display: inline-block;
-    background-color: white;
-    width: 4px;
-    height: 1.3em;
-    vertical-align: middle;
-    animation: blinkCaret 0.75s step-end infinite;
+    min-height: 1.5em;
 }
 
 .hero h1 {
-    font-family: 'Montserrat', sans-serif; /* Different font for H1 */
-    font-size: 4.8rem; /* Much larger hero title */
-    margin-bottom: 20px; /* Reduced margin to bring lines closer */
+    font-family: 'Montserrat', sans-serif;
+    font-size: 4.5rem;
+    margin-bottom: 15px;
     text-transform: uppercase;
-    letter-spacing: 3px; /* Increased letter spacing */
-    text-shadow: 3px 3px 8px rgba(0,0,0,0.4); /* Stronger shadow */
-    font-weight: 800;
-    opacity: 0; /* Hidden for JS animation */
-    transform: translateY(-30px); /* Starts above for animation */
-}
-
-.hero h1:first-of-type {
-    margin-top: 0;
-}
-
-.hero h1:last-of-type {
-    margin-bottom: 30px; /* Add margin after the last h1 */
+    letter-spacing: 3px;
+    text-shadow: 3px 3px 8px rgba(0,0,0,0.4);
+    font-weight: 900;
+    line-height: 1.1;
+    background: linear-gradient(135deg, #ffffff, #d1e8ff);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
 }
 
 .hero p {
-    font-size: 1.4rem; /* Larger hero paragraph */
+    font-size: 1.4rem;
     margin-bottom: 50px;
     max-width: 750px;
-    margin-left: auto;
     margin-right: auto;
     font-weight: 400;
     line-height: 1.6;
-    opacity: 0; /* Hidden for JS animation */
-    transform: translateY(30px); /* Starts below for animation */
     text-shadow: 1px 1px 3px rgba(0,0,0,0.3);
 }
 
-.hero .btn {
-    opacity: 0; /* Hidden for JS animation */
-    transform: translateY(30px); /* Starts below for animation */
+/* PRODUCT SECTIONS - ENHANCED STYLES */
+.perfumes-section {
+    background: var(--perfume-section-bg);
+    position: relative;
+    overflow: hidden;
+    border-radius: 20px;
+    margin: 40px auto;
+    max-width: 95%;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
 }
 
-/* ===== PRODUCTS SECTION (Perfumes & Sunglasses) ===== */
-.perfumes-section {
-    background-color: palegoldenrod; /* Attractive light blue for perfumes */
-    padding: 100px 0;
+.perfumes-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiPjxkZWZzPjxwYXR0ZXJuIGlkPSJwYXR0ZXJuIiB3aWR0aD0iNTAiIGhlaWdodD0iNTAiIHBhdHRlcm5Vbml0cz0idXNlclNwYWNlT25Vc2UiIHBhdHRlcm5UcmFuc2Zvcm09InJvdGF0ZSg0NSkiPjxjaXJjbGUgY3g9IjI1IiBjeT0iMjUiIHI9IjIiIGZpbGw9IiNmZmYiIGZpbGwtb3BhY2l0eT0iMC4xIi8+PC9wYXR0ZXJuPjwvZGVmcz48cmVjdCB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWxsPSJ1cmwoI3BhdHRlcm4pIiBvcGFjaXR5PSIwLjEiLz48L3N2Zz4=');
+    opacity: 0.2;
 }
 
 .sunglasses-section {
-    background-color: lightskyblue; /* Attractive light purple for sunglasses */
-    padding: 100px 0;
+    background: var(--sunglasses-section-bg);
+    position: relative;
+    overflow: hidden;
+    border-radius: 20px;
+    margin: 40px auto;
+    max-width: 95%;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
 }
 
-
-.perfume-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); /* Slightly larger cards */
-    gap: 40px; /* More spacing between cards */
+.sunglasses-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiPjxkZWZzPjxwYXR0ZXJuIGlkPSJwYXR0ZXJuIiB3aWR0aD0iNTAiIGhlaWdodD0iNTAiIHBhdHRlcm5Vbml0cz0idXNlclNwYWNlT25Vc2UiIHBhdHRlcm5UcmFuc2Zvcm09InJvdGF0ZSg0NSkiPjxyZWN0IHg9IjAiIHk9IjAiIHdpZHRoPSI1MCIgaGVpZ2h0PSI1MCIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjZmZmIiBzdHJva2Utd2lkdGg9IjEiIG9wYWNpdHk9IjAuMSIvPjwvcGF0dGVybj48L2RlZnM+PHJlY3Qgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgZmlsbD0idXJsKCNwYXR0ZXJuKSIgb3BhY2l0eT0iMC4xIi8+PC9zdmc+');
+    opacity: 0.2;
 }
 
-/* Modified sunglasses-container to sunglasses-grid */
-.sunglasses-grid {
+.beauty-skincare-section {
+    background: var(--beauty-section-bg);
+    position: relative;
+    overflow: hidden;
+    border-radius: 20px;
+    margin: 40px auto;
+    max-width: 95%;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+}
+
+.beauty-skincare-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiPjxkZWZzPjxwYXR0ZXJuIGlkPSJwYXR0ZXJuIiB3aWR0aD0iNTAiIGhlaWdodD0iNTAiIHBhdHRlcm5Vbml0cz0idXNlclNwYWNlT25Vc2UiIHBhdHRlcm5UcmFuc2Zvcm09InJvdGF0ZSg0NSkiPjxwYXRoIGQ9Ik0yNSwyNSBMMzUsMzUgTTE1LDE1IEwzNSwxNSBNMTUsMzUgTDM1LDM1IiBzdHJva2U9IiNmZmYiIHN0cm9rZS13aWR0aD0iMSIgb3BhY2l0eT0iMC4xIi8+PC9wYXR0ZXJuPjwvZGVmcz48cmVjdCB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWxsPSJ1cmwoI3BhdHRlcm4pIiBvcGFjaXR5PSIwLjEiLz48L3N2Zz4=');
+    opacity: 0.2;
+}
+
+.perfume-grid, .sunglasses-grid, .beauty-skincare-grid {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
     gap: 40px;
-    justify-content: center; /* Center items horizontally if they don't fill the grid */
-    align-items: flex-start; /* Align items to the start of the grid */
+    justify-content: center;
+    align-items: flex-start;
 }
 
-/* Specific rule for centering two sunglasses cards side-by-side */
-.sunglasses-grid:has(.sunglasses-card:nth-child(2):last-child) { /* Selects grid if it has exactly two cards */
-    grid-template-columns: repeat(2, minmax(300px, 1fr)); /* Force two columns */
-    max-width: 700px; /* Limit grid width to roughly two cards + gap, adjust as needed */
-    margin: 0 auto; /* Center the grid container itself */
-}
-
-
-.perfume-card, .sunglasses-card {
+.perfume-card, .sunglasses-card, .beauty-skincare-card {
     background: white;
     border-radius: var(--radius);
     overflow: hidden;
     box-shadow: var(--shadow);
     transition: var(--transition);
-    border: 1px solid rgba(0,0,0,0.05); /* Subtle border */
-    display: flex; /* For better content alignment */
+    border: 1px solid rgba(0,0,0,0.05);
+    display: flex;
     flex-direction: column;
+    cursor: pointer;
+    position: relative;
+    animation: float 6s ease-in-out infinite;
+    animation-delay: calc(0.2s * var(--i));
+    transform: translateY(0);
+    border: 3px solid transparent;
+    background-clip: padding-box;
+    border-image: linear-gradient(45deg, var(--primary), var(--accent)) 1;
+    z-index: 1;
 }
 
-.perfume-card:hover, .sunglasses-card:hover {
-    transform: translateY(-15px); /* More pronounced lift */
-    box-shadow: 0 20px 40px rgba(0,0,0,0.2);
-    border-color: var(--accent); /* Highlight on hover */
+.perfume-card::before, 
+.sunglasses-card::before, 
+.beauty-skincare-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(45deg, rgba(255,255,255,0.8), rgba(255,255,255,0.4));
+    z-index: -1;
+    opacity: 0.8;
+    border-radius: var(--radius);
 }
 
-.perfume-img, .sunglasses-img {
-    height: 320px; /* Taller image areas */
-    background-color: #f5f5f5;
+.perfume-card:hover, .sunglasses-card:hover, .beauty-skincare-card:hover {
+    transform: translateY(-15px) scale(1.03);
+    box-shadow: 0 20px 40px rgba(0,0,0,0.2), var(--card-hover-glow);
+    border-color: transparent;
+    animation-play-state: paused;
+    z-index: 2;
+}
+
+.perfume-img, .sunglasses-img, .beauty-skincare-img {
+    height: 320px;
+    background: linear-gradient(135deg, #f8f9fa, #e9ecef);
     display: flex;
     align-items: center;
     justify-content: center;
     overflow: hidden;
-    padding: 20px; /* Padding for images inside container */
+    padding: 20px;
+    position: relative;
+    border-bottom: 3px solid rgba(255,255,255,0.5);
 }
 
-.perfume-img img, .sunglasses-img img {
+.perfume-img::before, .sunglasses-img::before, .beauty-skincare-img::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(45deg, transparent, rgba(26, 115, 232, 0.1), transparent);
+    z-index: 1;
+    pointer-events: none;
+}
+
+.perfume-img img, .sunglasses-img img, .beauty-skincare-img img {
     width: 100%;
     height: 100%;
     object-fit: contain;
-    transition: transform 0.6s ease; /* Slower zoom transition */
+    transition: transform 0.6s ease;
+    position: relative;
+    z-index: 2;
+    filter: drop-shadow(0 5px 15px rgba(0,0,0,0.1));
 }
 
 .perfume-card:hover .perfume-img img,
-.sunglasses-card:hover .sunglasses-img img {
-    transform: scale(1.1); /* More pronounced zoom */
+.sunglasses-card:hover .sunglasses-img img,
+.beauty-skincare-card:hover .beauty-skincare-img img {
+    transform: scale(1.1);
 }
 
-.perfume-info, .sunglasses-info {
-    padding: 25px; /* More padding */
+.perfume-info, .sunglasses-info, .beauty-skincare-info {
+    padding: 25px;
     text-align: center;
-    flex-grow: 1; /* Make info section fill available space */
+    flex-grow: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    position: relative;
+    z-index: 2;
+    background: rgba(255,255,255,0.7);
+}
+
+.perfume-info h3, .sunglasses-info h3, .beauty-skincare-info h3 {
+    font-size: 1.6rem;
+    color: var(--primary);
+    font-weight: 700;
+    margin-bottom: 15px;
+    position: relative;
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+}
+
+.perfume-info h3::after, .sunglasses-info h3::after, .beauty-skincare-info h3::after {
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 50px;
+    height: 3px;
+    background: linear-gradient(90deg, var(--primary), var(--accent));
+    border-radius: 2px;
+}
+
+.price {
+    font-size: 1.4rem;
+    color: var(--secondary);
+    font-weight: 700;
+    margin-top: 10px;
     display: flex;
     align-items: center;
     justify-content: center;
 }
 
-.perfume-info h3, .sunglasses-info h3 {
-    font-size: 1.6rem; /* Larger product titles */
-    color: var(--primary);
-    font-weight: 700;
+.price::before {
+    content: 'ETB ';
+    font-size: 0.9em;
+    opacity: 0.8;
 }
 
-/* Removed specific sunglasses-container adjustments as it's now a grid */
-
-
-/* ===== DELIVERY SECTION ===== */
+/* DELIVERY SECTION */
 .delivery {
-    background-color: #eaf3f8; /* Lighter background for delivery */
+    background-color: #eaf3f8;
     padding: 80px 0;
+    position: relative;
+}
+
+.delivery::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiPjxkZWZzPjxwYXR0ZXJuIGlkPSJwYXR0ZXJuIiB3aWR0aD0iNDAiIGhlaWdodD0iNDAiIHBhdHRlcm5Vbml0cz0idXNlclNwYWNlT25Vc2UiIHBhdHRlcm5UcmFuc2Zvcm09InJvdGF0ZSg0NSkiPjxjaXJjbGUgY3g9IjIwIiBjeT0iMjAiIHI9IjEiIGZpbGw9IiMxYTczZTgiIGZpbGwtb3BhY2l0eT0iMC4wNSIvPjwvcGF0dGVybj48L2RlZnM+PHJlY3Qgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgZmlsbD0idXJsKCNwYXR0ZXJuKSIgb3BhY2l0eT0iMC4zIi8+PC9zdmc+');
+    opacity: 0.3;
 }
 
 .delivery-content {
     max-width: 900px;
     margin: 0 auto;
     text-align: center;
-    animation: fadeIn 1s ease-out;
+    position: relative;
+    z-index: 2;
 }
 
 .delivery-content h3 {
-    font-size: 2.2rem; /* Larger title */
+    font-size: 2.2rem;
     margin-bottom: 25px;
     color: var(--primary);
     font-weight: 700;
+    position: relative;
+    display: inline-block;
+}
+
+.delivery-content h3::after {
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100px;
+    height: 4px;
+    background: linear-gradient(90deg, var(--primary), var(--accent));
+    border-radius: 2px;
+    animation: gradient 3s ease infinite;
+    background-size: 200% 200%;
 }
 
 .delivery-content p {
@@ -609,47 +737,64 @@ header.scrolled {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    gap: 20px; /* More spacing between badges */
+    gap: 20px;
     margin-top: 40px;
 }
 
 .area-badge {
-    background-color: var(--secondary);
+    background: linear-gradient(135deg, var(--primary), var(--secondary));
     color: white;
-    padding: 10px 25px; /* Larger badges */
+    padding: 10px 25px;
     border-radius: 30px;
-    font-size: 1rem; /* Larger text in badges */
+    font-size: 1rem;
     font-weight: 600;
     transition: var(--transition);
     box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    animation: float 4s ease-in-out infinite;
+    animation-delay: calc(0.1s * var(--i));
 }
 
 .area-badge:hover {
-    transform: scale(1.1); /* More pronounced scale on hover */
-    background-color: #c0392b;
+    transform: scale(1.1);
+    background: linear-gradient(135deg, var(--secondary), var(--accent));
     box-shadow: 0 8px 15px rgba(0,0,0,0.2);
+    animation-play-state: paused;
 }
 
-/* ===== CONTACT SECTION ===== */
+/* CONTACT SECTION */
 .contact {
-    background: linear-gradient(to right, var(--primary), #1a2733); /* Darker gradient */
+    background: linear-gradient(to right, var(--primary), var(--dark));
     color: white;
     text-align: center;
     padding: 100px 0;
+    position: relative;
+    overflow: hidden;
+}
+
+.contact::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiPjxkZWZzPjxwYXR0ZXJuIGlkPSJwYXR0ZXJuIiB3aWR0aD0iNDAiIGhlaWdodD0iNDAiIHBhdHRlcm5Vbml0cz0idXNlclNwYWNlT25Vc2UiIHBhdHRlcm5UcmFuc2Zvcm09InJvdGF0ZSg0NSkiPjxjaXJjbGUgY3g9IjIwIiBjeT0iMjAiIHI9IjEiIGZpbGw9IiNmZmYiIGZpbGwtb3BhY2l0eT0iMC4xIi8+PC9wYXR0ZXJuPjwvZGVmcz48cmVjdCB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWxsPSJ1cmwoI3BhdHRlcm4pIiBvcGFjaXR5PSIwLjIiLz48L3N2Zz4=');
+    opacity: 0.3;
 }
 
 .contact h2 {
     color: white;
 }
 
-.contact .section-title:after {
+.contact .section-title h2::after {
     background: var(--accent);
 }
 
 .contact-content {
     max-width: 800px;
     margin: 0 auto;
-    animation: fadeIn 1s ease-out;
+    position: relative;
+    z-index: 2;
 }
 
 .contact-content p {
@@ -661,53 +806,64 @@ header.scrolled {
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
-    margin-top: 50px; /* More spacing */
-    gap: 25px; /* More spacing between contact items */
+    margin-top: 50px;
+    gap: 25px;
 }
 
 .contact-item {
     display: flex;
     align-items: center;
-    font-size: 1.2rem; /* Larger contact info text */
-    padding: 18px 30px; /* Larger padding */
-    background: rgba(255, 255, 255, 0.15); /* Slightly more visible background */
-    border-radius: 12px; /* More rounded */
+    font-size: 1.2rem;
+    padding: 18px 30px;
+    background: rgba(255, 255, 255, 0.15);
+    border-radius: 12px;
     transition: var(--transition);
     box-shadow: 0 5px 15px rgba(0,0,0,0.2);
-    backdrop-filter: blur(5px); /* Subtle blur effect */
+    backdrop-filter: blur(5px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .contact-item:hover {
-    background: rgba(255, 255, 255, 0.25); /* More opaque on hover */
-    transform: translateY(-8px) scale(1.02); /* More pronounced lift and slight scale */
+    background: rgba(255, 255, 255, 0.25);
+    transform: translateY(-8px) scale(1.02);
     box-shadow: 0 10px 25px rgba(0,0,0,0.3);
 }
 
 .contact-item i {
-    margin-right: 12px; /* More spacing */
-    font-size: 1.8rem; /* Larger icons */
+    margin-right: 12px;
+    font-size: 1.8rem;
     color: var(--accent);
 }
 
-/* ===== FOOTER ===== */
+/* FOOTER */
 footer {
     background-color: var(--dark);
     color: var(--light);
-    padding: 60px 0 30px; /* More padding */
+    padding: 60px 0 30px;
+    position: relative;
+}
+
+footer::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiPjxkZWZzPjxwYXR0ZXJuIGlkPSJwYXR0ZXJuIiB3aWR0aD0iNDAiIGhlaWdodD0iNDAiIHBhdHRlcm5Vbml0cz0idXNlclNwYWNlT25Vc2UiIHBhdHRlcm5UcmFuc2Zvcm09InJvdGF0ZSg0NSkiPjxjaXJjbGUgY3g9IjIwIiBjeT0iMjAiIHI9IjEiIGZpbGw9IiMxYTczZTgiIGZpbGwtb3BhY2l0eT0iMC4xIi8+PC9wYXR0ZXJuPjwvZGVmcz48cmVjdCB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWxsPSJ1cmwoI3BhdHRlcm4pIiBvcGFjaXR5PSIwLjEiLz48L3N2Zz4=');
+    opacity: 0.2;
 }
 
 .footer-container {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); /* Adjusted minmax */
-    gap: 40px; /* More spacing */
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 40px;
+    position: relative;
+    z-index: 2;
 }
 
 .footer-logo {
     margin-bottom: 25px;
-}
-
-.footer-logo img {
-    max-height: 70px;
 }
 
 .footer-about p {
@@ -717,7 +873,7 @@ footer {
 }
 
 .footer-section h3 {
-    font-size: 1.5rem; /* Larger footer titles */
+    font-size: 1.5rem;
     margin-bottom: 25px;
     color: white;
     position: relative;
@@ -729,9 +885,9 @@ footer {
     position: absolute;
     bottom: 0;
     left: 0;
-    width: 60px; /* Longer underline */
-    height: 4px; /* Thicker underline */
-    background: var(--secondary);
+    width: 60px;
+    height: 4px;
+    background: var(--accent);
     border-radius: 2px;
 }
 
@@ -747,11 +903,11 @@ footer {
 
 .footer-links a:hover {
     color: var(--accent);
-    transform: translateX(8px); /* More pronounced slide */
+    transform: translateX(8px);
 }
 
 .contact-details li {
-    margin-bottom: 18px; /* More spacing */
+    margin-bottom: 18px;
     display: flex;
     align-items: flex-start;
     font-size: 1rem;
@@ -760,21 +916,50 @@ footer {
 .contact-details i {
     margin-right: 12px;
     color: var(--accent);
-    min-width: 25px; /* Ensure icon has enough space */
+    min-width: 25px;
     font-size: 1.2rem;
 }
 
+.social-links {
+    display: flex;
+    gap: 15px;
+    margin-top: 20px;
+}
+
+.social-links a {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: rgba(255, 255, 255, 0.15);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: var(--transition);
+    color: var(--header-text-color);
+    font-size: 1.2rem;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+}
+
+.social-links a:hover {
+    background: linear-gradient(135deg, var(--primary), var(--secondary));
+    color: white;
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+}
+
 .copyright {
-    margin-top: 60px; /* More spacing */
+    margin-top: 60px;
     padding-top: 25px;
-    border-top: 1px solid rgba(255,255,255,0.15); /* Slightly more visible border */
+    border-top: 1px solid rgba(255,255,255,0.15);
     width: 100%;
     text-align: center;
     font-size: 0.95rem;
     color: var(--gray);
+    position: relative;
+    z-index: 2;
 }
 
-/* ===== ANIMATIONS ===== */
+/* ANIMATIONS */
 @keyframes fadeInDown {
     from {
         opacity: 0;
@@ -797,55 +982,6 @@ footer {
     }
 }
 
-@keyframes fadeIn {
-    from {
-        opacity: 0;
-    }
-    to {
-        opacity: 1;
-    }
-}
-
-/* Header slide-in animation */
-@keyframes slideInDown {
-    from {
-        transform: translateY(-100%);
-        opacity: 0;
-    }
-    to {
-        transform: translateY(0);
-        opacity: 1;
-    }
-}
-
-/* Background Zoom and Pan */
-@keyframes backgroundZoomPan {
-    0% {
-        background-size: 110% auto;
-        background-position: center center;
-    }
-    50% {
-        background-size: 100% auto;
-        background-position: center bottom;
-    }
-    100% {
-        background-size: 110% auto;
-        background-position: center center;
-    }
-}
-
-/* Typing Effect for Subheading */
-@keyframes typing {
-    from { width: 0 }
-    to { width: 100% }
-}
-
-@keyframes blinkCaret {
-    from, to { border-color: transparent }
-    50% { border-color: white }
-}
-
-
 /* Applied to elements you want to animate on scroll */
 .fade-in-up {
     opacity: 0;
@@ -864,14 +1000,145 @@ footer {
     transform: translateY(30px);
 }
 
-/* Specific animations for H1 */
 .hero h1.animate-hero-text {
     transform: translateY(-30px);
 }
 
+/* Modal Styles */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1001;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.8);
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    transition: opacity 0.3s ease-in-out;
+}
 
-/* ===== RESPONSIVE DESIGN ===== */
+.modal.show {
+    display: flex;
+    opacity: 1;
+}
+
+.modal-content {
+    background-color: #fff;
+    margin: auto;
+    padding: 40px;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+    position: relative;
+    width: 90%;
+    max-width: 800px;
+    transform: translateY(-50px);
+    transition: transform 0.3s ease-in-out;
+    color: var(--dark);
+    background: linear-gradient(135deg, #ffffff, #f0f8ff);
+    border: 2px solid transparent;
+    background-clip: padding-box;
+    border-image: linear-gradient(135deg, var(--primary), var(--accent)) 1;
+}
+
+.modal.show .modal-content {
+    transform: translateY(0);
+}
+
+.close-button {
+    color: var(--gray);
+    font-size: 30px;
+    font-weight: bold;
+    position: absolute;
+    top: 15px;
+    right: 25px;
+    cursor: pointer;
+    transition: color 0.3s ease;
+}
+
+.close-button:hover,
+.close-button:focus {
+    color: var(--secondary);
+    text-decoration: none;
+    transform: rotate(90deg);
+}
+
+/* Product Detail Modal Specific Styles */
+.product-detail-header {
+    display: flex;
+    gap: 30px;
+    margin-bottom: 30px;
+    align-items: flex-start;
+    flex-wrap: wrap;
+}
+
+.product-detail-image {
+    width: 250px;
+    height: 250px;
+    object-fit: contain;
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+    background-color: #f5f5f5;
+    padding: 15px;
+    flex-shrink: 0;
+    animation: float 5s ease-in-out infinite;
+}
+
+.product-detail-info {
+    flex: 1;
+    min-width: 280px;
+    text-align: left;
+}
+
+.product-detail-title {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 2.5rem;
+    margin-bottom: 15px;
+    color: var(--primary);
+    font-weight: 800;
+    background: linear-gradient(135deg, var(--primary), var(--secondary));
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+}
+
+.product-detail-description {
+    font-size: 1.1rem;
+    line-height: 1.8;
+    color: var(--dark);
+    margin-top: 20px;
+    position: relative;
+    padding-left: 20px;
+}
+
+.product-detail-description::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 4px;
+    background: linear-gradient(180deg, var(--primary), var(--accent));
+    border-radius: 2px;
+}
+
+/* RESPONSIVE DESIGN */
 @media (max-width: 992px) {
+    .hero-container {
+        flex-direction: column;
+        justify-content: center;
+    }
+
+    .hero-content {
+        max-width: 100%;
+        padding-right: 0;
+        text-align: center;
+        margin-bottom: 40px;
+    }
+
     .hero h1 {
         font-size: 3.5rem;
         letter-spacing: 2px;
@@ -880,75 +1147,81 @@ footer {
         font-size: 1.2rem;
     }
     .section-title h2 {
-        font-size: 2.8rem;
+        font-size: 2.5rem;
     }
-    /* Change phone group alignment to center for better stacking */
-    .phone-group {
-        justify-content: center; /* Center phone numbers on smaller screens */
-    }
-    .contact-info {
-        gap: 10px; /* Reduce gap to allow more space for wrapping */
-        justify-content: center; /* Center items when they wrap */
-    }
-    .social-links {
-        justify-content: center; /* Center social links when they wrap */
-        width: 100%; /* Take full width when wrapped */
-        margin-top: 10px; /* Add some space above social links if they wrap */
-    }
-    .social-links a {
-        width: 38px;
-        height: 38px;
-        margin: 0 8px; /* Adjust margin for centering */
-    }
-    .perfume-grid {
+    .perfume-grid, .sunglasses-grid, .beauty-skincare-grid {
         grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
         gap: 25px;
     }
     .hero-subheading-wrap {
         font-size: 1.3rem;
     }
-    .sunglasses-grid { /* Responsive adjustment for sunglasses grid */
-        grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-        gap: 25px;
+    .nav-menu ul {
+        gap: 20px;
     }
-    /* Adjusted for two sunglasses cards on smaller screens if they fit */
-    .sunglasses-grid:has(.sunglasses-card:nth-child(2):last-child) {
-        max-width: 600px; /* Adjust max-width for two cards on smaller screens */
+    .hero-video-container {
+        width: 80%;
+        padding-bottom: 80%;
+        margin-left: 0;
+        border-radius: 12px;
+        box-shadow: 0 0 30px rgba(0,0,0,0.5), inset 0 0 15px rgba(255,255,255,0.1);
+        border: 5px solid transparent;
+        background: linear-gradient(45deg, var(--primary), var(--secondary), var(--accent)) border-box;
+    }
+    .hero-video-frame {
+        border-radius: 12px;
+    }
+
+    .product-detail-header {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+
+    .product-detail-image {
+        margin-bottom: 20px;
     }
 }
 
 @media (max-width: 768px) {
-    .header-container {
-        flex-wrap: wrap;
-        height: auto;
-        padding: 15px 0;
-        justify-content: center;
+    .mobile-toggle {
+        display: block;
     }
     
-    .logo {
+    .nav-menu {
+        position: fixed;
+        top: var(--header-height);
+        left: -100%;
+        width: 80%;
+        height: calc(100vh - var(--header-height));
+        background: var(--header-bg);
+        flex-direction: column;
+        padding: 40px 20px;
+        transition: all 0.4s ease;
+        z-index: 999;
+        backdrop-filter: blur(10px);
+        border-right: 2px solid rgba(255,255,255,0.1);
+    }
+    
+    .nav-menu.active {
+        left: 0;
+    }
+    
+    .nav-menu ul {
+        flex-direction: column;
+        gap: 25px;
         width: 100%;
-        justify-content: center;
+    }
+    
+    .nav-menu li a {
+        font-size: 1.3rem;
+        padding: 12px 0;
+        display: block;
         text-align: center;
-        margin-bottom: 15px;
-    }
-    
-    .contact-info {
-        margin-top: 15px;
-        width: 100%;
-        flex-direction: column; /* Explicitly stack phone group and social links */
-        gap: 10px; /* Keep reduced gap */
-    }
-
-    .phone-group {
-        flex-direction: column; /* Revert to column for very small screens if preferred, or keep row and let them wrap */
-        align-items: center; /* Center them when stacked */
-        gap: 8px; /* Smaller gap when stacked */
-        width: 100%;
     }
     
     .hero {
-        height: auto;
-        min-height: 70vh;
+        min-height: 600px;
         padding: 120px 0 80px;
     }
 
@@ -988,42 +1261,37 @@ footer {
         justify-content: center;
     }
     
-    .perfume-img, .sunglasses-img {
+    .perfume-img, .sunglasses-img, .beauty-skincare-img {
         height: 280px;
     }
     .contact-item {
         font-size: 1.1rem;
         padding: 15px 25px;
     }
-    .sunglasses-grid { /* Responsive adjustment for sunglasses grid */
-        grid-template-columns: 1fr; /* Stack sunglasses on smaller screens */
-        max-width: none; /* Remove max-width when stacking */
-    }
 }
 
 @media (max-width: 576px) {
     .logo-img {
-        height: 55px;
+        height: 50px;
+        width: 50px;
         margin-right: 10px;
     }
     .logo-text .company-name {
-        font-size: 1.6rem;
+        font-size: 1.5rem;
     }
     .logo-text .tagline {
-        font-size: 0.85rem;
+        font-size: 0.8rem;
     }
     
     .hero {
-        padding-top: 140px;
+        padding-top: 100px;
+        min-height: 500px;
     }
     
     .hero h1 {
-        font-size: 2rem;
+        font-size: 2.2rem;
         letter-spacing: 1px;
         margin-bottom: 10px;
-    }
-    .hero h1:last-of-type {
-        margin-bottom: 25px;
     }
     
     .hero p {
@@ -1041,7 +1309,7 @@ footer {
     .contact-item {
         width: 100%;
         justify-content: center;
-        flex-direction: column; /* Stack icon and text for smaller screens */
+        flex-direction: column;
         text-align: center;
     }
 
@@ -1050,23 +1318,19 @@ footer {
         margin-bottom: 5px;
     }
     
-    .perfume-grid {
+    .perfume-grid, .sunglasses-grid, .beauty-skincare-grid {
         grid-template-columns: 1fr;
     }
     
-    .phone-group div {
-        font-size: 0.9rem;
-    }
-    
-    .perfume-img, .sunglasses-img {
+    .perfume-img, .sunglasses-img, .beauty-skincare-img {
         height: 220px;
     }
     .btn {
-        padding: 10px 25px;
-        font-size: 0.9rem;
+        padding: 12px 30px;
+        font-size: 1rem;
     }
     section {
-        padding: 60px 0;
+        padding: 70px 0;
     }
     .delivery-content h3 {
         font-size: 1.8rem;
@@ -1076,5 +1340,6 @@ footer {
     }
     .area-badge {
         padding: 8px 20px;
-        font-size: 0.85rem;
+        font-size: 0.9rem;
     }
+}

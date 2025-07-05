@@ -7,14 +7,16 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&family=Poppins:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800;900&family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
+    <!-- Header -->
     <header class="animate-header">
         <div class="container header-container">
             <div class="logo">
                 <a href="#" class="logo-link">
+                    <!-- Updated logo image source to local path -->
                     <img src="images/logo.jpg" alt="Mendarine Commerce Logo" class="logo-img">
                     <div class="logo-text">
                         <div class="company-name">MENDARINE<span>-COMMERCE</span></div>
@@ -23,48 +25,67 @@
                 </a>
             </div>
             
-            <div class="contact-info">
-                <div class="phone-group">
-                    <div class="phone-item">
-                        <i class="fas fa-phone"></i> <span>+251937946351</span>
-                    </div>
-                    <div class="phone-item">
-                        <i class="fas fa-phone"></i> <span>+251929951999</span>
-                    </div>
-                    <div class="phone-item">
-                        <i class="fas fa-phone"></i> <span>+251915037449</span>
-                    </div>
-                </div>
-                
-                <div class="social-links">
-                    <a href="https://t.me/menderincom_3" target="_blank" aria-label="Telegram">
-                        <i class="fab fa-telegram"></i>
-                    </a>
-                    <a href="https://www.instagram.com/menderincom?igsh=MXY2Z3FsNjlsMnIwaQ==" target="_blank" aria-label="Instagram">
-                        <i class="fab fa-instagram"></i>
-                    </a>
-                    <a href="https://www.tiktok.com/@menderincom?_t=ZM-8xkEW5Nqgbu&_r=1" target="_blank" aria-label="TikTok">
-                        <i class="fab fa-tiktok"></i>
-                    </a>
-                </div>
+            <!-- Navigation Menu -->
+            <nav class="nav-menu">
+                <ul>
+                    <li><a href="#" class="active">Home</a></li>
+                    <li><a href="#perfumes">Perfumes</a></li>
+                    <li><a href="#sunglasses">Sunglasses</a></li>
+                    <li><a href="#beauty-skincare">Beauty</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </nav>
+            
+            <!-- Header Icons -->
+            <div class="header-icons">
+                <a href="#" class="search-icon" aria-label="Search">
+                    <i class="fas fa-search"></i>
+                </a>
+                <a href="#" class="cart-icon" aria-label="Cart">
+                    <i class="fas fa-shopping-cart"></i>
+                    <span class="cart-count">3</span>
+                </a>
+            </div>
+            
+            <!-- Mobile Menu Toggle -->
+            <div class="mobile-toggle">
+                <i class="fas fa-bars"></i>
             </div>
         </div>
     </header>
 
+    <!-- Hero Section -->
     <section class="hero">
-        <div class="container hero-content">
-            <div class="hero-subheading-wrap">
-                <span class="hero-subheading" id="hero-subheading"></span>
-                <span class="cursor"></span>
+        <div class="hero-container">
+            <div class="hero-video-container">
+                <div class="hero-video-frame">
+                    <!-- Updated video source to local path -->
+                    <video autoplay loop muted playsinline class="hero-video">
+                        <source src="videos/vid.mp4" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+                    <div class="video-overlay"></div>
+                    <div class="video-play-btn">
+                        <i class="fas fa-play"></i>
+                    </div>
+                </div>
             </div>
             
-            <h1 class="animate-hero-text">Premium Products</h1>
-            <h1 class="animate-hero-text">At Your Doorstep</h1>
-            <p class="animate-hero-text">Discover Ethiopia's finest selection of products with nationwide delivery and exceptional customer service</p>
-            <a href="#perfumes" class="btn animate-hero-btn">Shop Now</a>
+            <div class="hero-content">
+                <div class="hero-subheading-wrap">
+                    <span class="hero-subheading" id="hero-subheading"></span>
+                    <span class="cursor"></span>
+                </div>
+                
+                <h1 class="animate-hero-text">Premium Products</h1>
+                <h1 class="animate-hero-text">At Your Doorstep</h1>
+                <p class="animate-hero-text">Discover Ethiopia's finest selection of products with nationwide delivery and exceptional customer service.</p>
+                <a href="#perfumes" class="btn animate-hero-btn">Shop Now</a>
+            </div>
         </div>
     </section>
 
+    <!-- Perfumes Section -->
     <section id="perfumes" class="perfumes-section">
         <div class="container">
             <div class="section-title">
@@ -72,90 +93,136 @@
             </div>
             
             <div class="perfume-grid">
-                <div class="perfume-card fade-in-up">
+                <div class="perfume-card fade-in-up" style="--i:0" 
+                    data-title="Afnan Perfume" 
+                    data-image="images/perfumes/afnan.jfif" 
+                    data-description="A captivating fragrance known for its long-lasting and unique blend of oriental and woody notes. Perfect for daily wear or special occasions.">
                     <div class="perfume-img">
                         <img src="images/perfumes/afnan.jfif" alt="Afnan Perfume">
                     </div>
                     <div class="perfume-info">
                         <h3>Afnan Perfume</h3>
+                        <!-- Price removed as per user request -->
                     </div>
                 </div>
                 
-                <div class="perfume-card fade-in-up">
+                <div class="perfume-card fade-in-up" style="--i:1" 
+                    data-title="Asad Perfume" 
+                    data-image="images/perfumes/asad.jfif" 
+                    data-description="An intense and sophisticated scent, Asad Perfume offers a rich blend of spicy and musky accords, leaving a powerful impression.">
                     <div class="perfume-img">
                         <img src="images/perfumes/asad.jfif" alt="Asad Perfume">
                     </div>
                     <div class="perfume-info">
                         <h3>Asad Perfume</h3>
+                        <!-- Price removed as per user request -->
                     </div>
                 </div>
                 
-                <div class="perfume-card fade-in-up">
+                <div class="perfume-card fade-in-up" style="--i:2" 
+                    data-title="Khamrah Perfume" 
+                    data-image="images/perfumes/khamra.jfif" 
+                    data-description="Khamrah is a luxurious and warm fragrance, featuring sweet and gourmand notes that evoke comfort and elegance. Ideal for evening wear.">
                     <div class="perfume-img">
                         <img src="images/perfumes/khamrah.jfif" alt="Khamrah Perfume">
                     </div>
                     <div class="perfume-info">
                         <h3>Khamrah Perfume</h3>
+                        <!-- Price removed as per user request -->
                     </div>
                 </div>
 
-                <div class="perfume-card fade-in-up">
+                <div class="perfume-card fade-in-up" style="--i:3" 
+                    data-title="Hayati Perfume" 
+                    data-image="images/perfumes/hayaati.jfif" 
+                    data-description="A fresh and vibrant scent, Hayati Perfume is perfect for those who prefer a light, airy, and invigorating fragrance for everyday use.">
                     <div class="perfume-img">
                         <img src="images/perfumes/hayaati.jfif" alt="Hayati Perfume">
                     </div>
                     <div class="perfume-info">
                         <h3>Hayati Perfume</h3>
+                        <!-- Price removed as per user request -->
                     </div>
                 </div>
 
-                <div class="perfume-card fade-in-up">
+                <div class="perfume-card fade-in-up" style="--i:4" 
+                    data-title="Eclaire Lattafa" 
+                    data-image="images/perfumes/eclaire lattafa.jfif" 
+                    data-description="Eclaire Lattafa offers a radiant and luminous scent profile, combining floral and fruity notes for a truly enchanting experience.">
                     <div class="perfume-img">
                         <img src="images/perfumes/eclaire lattafa.jfif" alt="Eclaire Lattafa Perfume">
                     </div>
                     <div class="perfume-info">
                         <h3>Eclaire Lattafa</h3>
+                        <!-- Price removed as per user request -->
                     </div>
                 </div>
 
-                <div class="perfume-card fade-in-up">
+                <div class="perfume-card fade-in-up" style="--i:5" 
+                    data-title="Sauvage Dior" 
+                    data-image="images/perfumes/sauvage dior.jfif" 
+                    data-description="Sauvage Dior is a raw and noble fragrance, inspired by wild, open spaces and a blue sky that covers rocky landscapes. A timeless classic.">
                     <div class="perfume-img">
                         <img src="images/perfumes/sauvage dior.jfif" alt="Sauvage Dior Perfume">
                     </div>
                     <div class="perfume-info">
                         <h3>Sauvage Dior</h3>
+                        <!-- Price removed as per user request -->
                     </div>
                 </div>
-
             </div>
         </div>
     </section>
 
-    <section class="sunglasses-section">
+    <!-- Sunglasses Section -->
+    <section id="sunglasses" class="sunglasses-section">
         <div class="container">
             <div class="section-title">
                 <h2>Designer Sunglasses</h2>
             </div>
             
-            <div class="sunglasses-grid"> <div class="sunglasses-card fade-in-up">
+            <div class="sunglasses-grid"> 
+                <div class="sunglasses-card fade-in-up" style="--i:0"
+                    data-title="Premium Sunglasses"
+                    data-image="images/sunglasses/sunglasses.jfif"
+                    data-description="Stylish and protective, these premium sunglasses feature UV400 protection and a durable frame, perfect for any outdoor activity.">
                     <div class="sunglasses-img">
                         <img src="images/sunglasses/sunglasses.png" alt="Designer Sunglasses">
                     </div>
                     <div class="sunglasses-info">
                         <h3>Premium Sunglasses</h3>
+                        <!-- Price removed as per user request -->
                     </div>
                 </div>
-                <div class="sunglasses-card fade-in-up">
+                <div class="sunglasses-card fade-in-up" style="--i:1"
+                    data-title="Designer Sunglass 2"
+                    data-image="images/sunglasses/sunglass 2.jfif"
+                    data-description="Elevate your look with these designer sunglasses, offering a blend of modern aesthetics and superior eye protection.">
                     <div class="sunglasses-img">
                         <img src="images/sunglasses/sunglass 2.png" alt="Designer Sunglasses 2">
                     </div>
                     <div class="sunglasses-info">
                         <h3>Designer Sunglass 2</h3>
+                        <!-- Price removed as per user request -->
+                    </div>
+                </div>
+                <div class="sunglasses-card fade-in-up" style="--i:2"
+                    data-title="Designer Sunglass 3"
+                    data-image="images/sunglasses/sunglasses.jfif"
+                    data-description="Elevate your look with these designer sunglasses, offering a blend of modern aesthetics and superior eye protection.">
+                    <div class="sunglasses-img">
+                        <img src="images/sunglasses/sunglass 3.jfif" alt="Designer Sunglasses 3">
+                    </div>
+                    <div class="sunglasses-info">
+                        <h3>Designer Sunglass 3</h3>
+                        <!-- Price removed as per user request -->
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
+    <!-- Beauty & Skincare Section -->
     <section id="beauty-skincare" class="beauty-skincare-section">
         <div class="container">
             <div class="section-title">
@@ -163,36 +230,49 @@
             </div>
             
             <div class="beauty-skincare-grid">
-                <div class="beauty-skincare-card fade-in-up">
+                <div class="beauty-skincare-card fade-in-up" style="--i:0"
+                    data-title="Cerave Moisturizer"
+                    data-image="images/additional/cerave.jfif"
+                    data-description="A hydrating moisturizer that helps restore the protective skin barrier with three essential ceramides. Suitable for all skin types.">
                     <div class="beauty-skincare-img">
                         <img src="images/additional/cerave.jfif" alt="Cerave Product">
                     </div>
                     <div class="beauty-skincare-info">
                         <h3>Cerave Moisturizer</h3>
+                        <!-- Price removed as per user request -->
                     </div>
                 </div>
                 
-                <div class="beauty-skincare-card fade-in-up">
+                <div class="beauty-skincare-card fade-in-up" style="--i:1"
+                    data-title="Mielle Rosemary Oil"
+                    data-image="images/additional/mielle rosemary.jfif"
+                    data-description="Infused with biotin, this organic hair oil promotes hair growth, nourishes follicles, and smooths split ends. Ideal for all hair types.">
                     <div class="beauty-skincare-img">
-                        <img src="images/additional/Mielle Rosemary.jfif" alt="Mielle Rosemary Hair Oil">
+                        <img src="images/additional/mielle rosemary.jfif" alt="Mielle Rosemary Hair Oil">
                     </div>
                     <div class="beauty-skincare-info">
                         <h3>Mielle Rosemary Oil</h3>
+                        <!-- Price removed as per user request -->
                     </div>
                 </div>
                 
-                <div class="beauty-skincare-card fade-in-up">
+                <div class="beauty-skincare-card fade-in-up" style="--i:2"
+                    data-title="Snail Mucin Essence"
+                    data-image="images/additional/snail.jfif"
+                    data-description="A highly concentrated essence formulated with snail secretion filtrate to hydrate, repair, and rejuvenate the skin, improving texture and elasticity.">
                     <div class="beauty-skincare-img">
                         <img src="images/additional/snail.png" alt="Snail Mucin Product">
                     </div>
                     <div class="beauty-skincare-info">
                         <h3>Snail Mucin Essence</h3>
+                        <!-- Price removed as per user request -->
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
+    <!-- Delivery Section -->
     <section class="delivery">
         <div class="container">
             <div class="delivery-content">
@@ -200,18 +280,19 @@
                 <p>We offer free delivery to the following locations in Addis Ababa:</p>
                 
                 <div class="delivery-areas">
-                    <div class="area-badge fade-in-up">MEXICO</div>
-                    <div class="area-badge fade-in-up">LIDETA</div>
-                    <div class="area-badge fade-in-up">PIASSA</div>
-                    <div class="area-badge fade-in-up">BOLE M</div>
-                    <div class="area-badge fade-in-up">JEMO</div>
-                    <div class="area-badge fade-in-up">BISRAT GEBRIEL</div>
+                    <div class="area-badge fade-in-up" style="--i:0">MEXICO</div>
+                    <div class="area-badge fade-in-up" style="--i:1">LIDETA</div>
+                    <div class="area-badge fade-in-up" style="--i:2">PIASSA</div>
+                    <div class="area-badge fade-in-up" style="--i:3">BOLE M</div>
+                    <div class="area-badge fade-in-up" style="--i:4">JEMO</div>
+                    <div class="area-badge fade-in-up" style="--i:5">BISRAT GEBRIEL</div>
                 </div>
             </div>
         </div>
     </section>
 
-    <section class="contact">
+    <!-- Contact Section -->
+    <section id="contact" class="contact">
         <div class="container">
             <div class="section-title">
                 <h2>Contact Us</h2>
@@ -236,31 +317,31 @@
                         <span>+251915037449</span>
                     </div>
                     
-                  <div class="contact-item fade-in-up">
-    <i class="fas fa-envelope"></i>
-    <a href="mailto:mendarinecommerce@gmail.com" target="_blank" style="color: inherit;">mendarinecommerce@gmail.com</a>
-</div>
+                    <div class="contact-item fade-in-up">
+                        <i class="fas fa-envelope"></i>
+                        <a href="mailto:mendarinecommerce@gmail.com" target="_blank">mendarinecommerce@gmail.com</a>
+                    </div>
 
-<div class="contact-item fade-in-up">
-    <i class="fab fa-telegram"></i>
-    <a href="https://t.me/menderincom_3" target="_blank" style="color: inherit;">t.me/menderincom_3</a>
-</div>
+                    <div class="contact-item fade-in-up">
+                        <i class="fab fa-telegram"></i>
+                        <a href="https://t.me/menderincom_3" target="_blank">t.me/menderincom_3</a>
+                    </div>
 
-<div class="contact-item fade-in-up">
-    <i class="fab fa-instagram"></i>
-    <a href="https://www.instagram.com/menderincom" target="_blank" style="color: inherit;">@menderincom</a>
-</div>
+                    <div class="contact-item fade-in-up">
+                        <i class="fab fa-instagram"></i>
+                        <a href="https://www.instagram.com/menderincom" target="_blank">@menderincom</a>
+                    </div>
 
-<div class="contact-item fade-in-up">
-    <i class="fab fa-tiktok"></i>
-    <a href="https://www.tiktok.com/@menderincom" target="_blank" style="color: inherit;">@menderincom</a>
-</div>
-
+                    <div class="contact-item fade-in-up">
+                        <i class="fab fa-tiktok"></i>
+                        <a href="https://www.tiktok.com/@menderincom" target="_blank">@menderincom</a>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
+    <!-- Footer -->
     <footer>
         <div class="container">
             <div class="footer-container">
@@ -317,14 +398,23 @@
                         <li><a href="#">Harar</a></li>
                     </ul>
                 </div>
-                
             </div>
             
             <div class="copyright">
-                &copy; 2023 Mendarine Commerce. All rights reserved.
+                &copy; 2024 Mendarine Commerce. All rights reserved.
             </div>
         </div>
     </footer>
+
+    <!-- Product Detail Modal -->
+    <div id="productDetailModal" class="modal">
+        <div class="modal-content">
+            <span class="close-button" id="closeProductDetailModal">&times;</span>
+            <div id="productDetailContent">
+                <!-- Product details will be loaded here -->
+            </div>
+        </div>
+    </div>
 
     <script src="script.js"></script>
 </body>
