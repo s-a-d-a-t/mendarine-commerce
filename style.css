@@ -21,6 +21,15 @@
     --sunglasses-section-bg: linear-gradient(135deg, #e0f7fa, #d1f2eb, #d0ece7);
     --beauty-section-bg: linear-gradient(135deg, #f5e3ff, #e8daf7, #e2d1f9);
     --card-hover-glow: 0 0 20px rgba(255, 107, 107, 0.6);
+    
+    /* Dark theme variables */
+    --header-bg-dark: #0a1429;
+    --text-dark: #e0e0e0;
+    --bg-dark: #121a2d;
+    --card-dark: #1a243d;
+    --section-bg-dark: rgba(26, 36, 61, 0.8);
+    --footer-bg-dark: #0a1120;
+    --modal-bg-dark: #1a243d;
 }
 
 /* Floating animation for product cards */
@@ -70,6 +79,7 @@ body {
     overflow-x: hidden;
     padding-top: var(--header-height);
     background: linear-gradient(135deg, #f5f7fa 0%, #e4edf9 100%);
+    transition: background 0.5s ease, color 0.5s ease;
 }
 
 a {
@@ -319,6 +329,28 @@ header {
     cursor: pointer;
 }
 
+/* Theme Toggle Styles */
+.theme-toggle {
+    cursor: pointer;
+    font-size: 1.4rem;
+    transition: all 0.3s ease;
+    color: var(--header-text-color);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.15);
+    box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+}
+
+.theme-toggle:hover {
+    color: var(--accent);
+    transform: scale(1.1);
+    background: linear-gradient(135deg, var(--primary), var(--secondary));
+}
+
 /* HERO SECTION */
 .hero {
     height: 100vh;
@@ -339,7 +371,7 @@ header {
     left: 0;
     width: 100%;
     height: 100%;
-    background: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiPjxkZWZzPjxwYXR0ZXJuIGlkPSJwYXR0ZXJuIiB3aWR0aD0iNDAiIGhlaWdodD0iNDAiIHBhdHRlcm5Vbml0cz0idXNlclNwYWNlT25Vc2UiIHBhdHRlcm5UcmFuc2Zvcm09InJvdGF0ZSg0NSkiPjxjaXJjbGUgY3g9IjIwIiBjeT0iMjAiIHI9IjEiIGZpbGw9IiNmZmYiIGZpbGwtb3BhY2l0eT0iMC4xIi8+PC9wYXR0ZXJuPjwvZGVmcz48cmVjdCB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWxsPSJ1cmwoI3BhdHRlcm4pIiBvcGFjaXR5PSIwLjIiLz48L3N2Zz4=');
+    background: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiPjxkZWZzPjxwYXR0ZXJuIGlkPSJwYXR0ZXJuIiB3aWR0aD0iNDAiIGhlaWdodD0iNDAiIHBhdHRlcm5Vbml0cz0idXNlclNwYWNlT25Vc2UiIHBhdHRlcm5UcmFuc2Zvcm09InJvdGF0ZSg0NSkiPjxjaXJjbGUgY3g9IjIwIiBjeT0iMjAiIHI9IjEiIGZpbGw9IiNmZmYiIGZpbGwtb3BhY2l0eT0iMC4xIi8+PC9wYXR0ZXJuPjwvZGVmcz48cmVjdCB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWxsPSJ1cmwoI3BhdHRlcm4pIiBvcGFjaXR5PSIwLjMiLz48L3N2Zz4=');
     opacity: 0.3;
 }
 
@@ -488,7 +520,7 @@ header {
     left: 0;
     width: 100%;
     height: 100%;
-    background: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiPjxkZWZzPjxwYXR0ZXJuIGlkPSJwYXR0ZXJuIiB3aWR0aD0iNTAiIGhlaWdodD0iNTAiIHBhdHRlcm5Vbml0cz0idXNlclNwYWNlT25Vc2UiIHBhdHRlcm5UcmFuc2Zvcm09InJvdGF0ZSg0NSkiPjxjaXJjbGUgY3g9IjI1IiBjeT0iMjUiIHI9IjIiIGZpbGw9IiNmZmYiIGZpbGwtb3BhY2l0eT0iMC4xIi8+PC9wYXR0ZXJuPjwvZGVmcz48cmVjdCB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWxsPSJ1cmwoI3BhdHRlcm4pIiBvcGFjaXR5PSIwLjEiLz48L3N2Zz4=');
+    background: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiPjxkZWZzPjxwYXR0ZXJuIGlkPSJwYXR0ZXJuIiB3aWR0aD0iNTAiIGhlaWdodD0iNTAiIHBhdHRlcm5Vbml0cz0idXNlclNwYWNlT25Vc2UiIHBhdHRlcm5UcmFuc2Zvcm09InJvdGF0ZSg0NSkiPjxjaXJjbGUgY3g9IjI1IiBjeT0iMjUiIHI9IjIiIGZpbGw9IiNmZmYiIGZpbGwtb3BhY2l0eT0iMC4xIi8+PC9wYXR0ZXJuPjwvZGVmcz48cmVjdCB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWxsPSJ1cmwoI3BhdHRlcm4pIiBvcGFjaXR5PSIwLjIiLz48L3N2Zz4=');
     opacity: 0.2;
 }
 
@@ -1342,4 +1374,102 @@ footer::before {
         padding: 8px 20px;
         font-size: 0.9rem;
     }
+}
+
+/* DARK THEME STYLES */
+.dark-theme {
+    --primary: #4da6ff;
+    --secondary: #66d9ef;
+    --accent: #ff6b6b;
+    --light: #2d3748;
+    --dark: #e2e8f0;
+    --gray: #a0aec0;
+    --header-bg: var(--header-bg-dark);
+    --perfume-section-bg: linear-gradient(135deg, #1a243d, #1f2b4a);
+    --sunglasses-section-bg: linear-gradient(135deg, #152238, #1a2840);
+    --beauty-section-bg: linear-gradient(135deg, #1d2a48, #223153);
+    --header-text-color: #e0e0e0;
+    --hero-overlay-color-start: rgba(13, 42, 92, 0.9);
+    --hero-overlay-color-end: rgba(0, 70, 100, 0.85);
+}
+
+.dark-theme body {
+    background: var(--bg-dark);
+    color: var(--text-dark);
+}
+
+.dark-theme .perfume-card,
+.dark-theme .sunglasses-card,
+.dark-theme .beauty-skincare-card {
+    background: var(--card-dark);
+    border-color: rgba(255,255,255,0.1);
+}
+
+.dark-theme .perfume-info,
+.dark-theme .sunglasses-info,
+.dark-theme .beauty-skincare-info {
+    background: rgba(26, 36, 61, 0.7);
+    color: var(--text-dark);
+}
+
+.dark-theme .modal-content {
+    background: var(--modal-bg-dark);
+    color: var(--text-dark);
+    border-image: linear-gradient(45deg, var(--primary), var(--accent)) 1;
+}
+
+.dark-theme .delivery {
+    background-color: #152238;
+}
+
+.dark-theme .delivery-content h3 {
+    color: var(--primary);
+}
+
+.dark-theme .footer-about p {
+    color: #cbd5e0;
+}
+
+.dark-theme .copyright {
+    color: #a0aec0;
+}
+
+.dark-theme footer {
+    background-color: var(--footer-bg-dark);
+}
+
+.dark-theme .section-title h2 {
+    color: var(--primary);
+}
+
+.dark-theme .price {
+    color: var(--secondary);
+}
+
+.dark-theme .contact {
+    background: linear-gradient(to right, var(--primary), var(--dark));
+}
+
+.dark-theme .contact-item {
+    background: rgba(255, 255, 255, 0.1);
+}
+
+.dark-theme .contact-item:hover {
+    background: rgba(255, 255, 255, 0.2);
+}
+
+.dark-theme .btn {
+    background: linear-gradient(135deg, var(--primary), var(--secondary));
+}
+
+.dark-theme .btn:hover {
+    background: linear-gradient(135deg, var(--secondary), var(--primary));
+}
+
+.dark-theme .logo-text .company-name span {
+    color: var(--accent);
+}
+
+.dark-theme .theme-toggle .fa-moon::before {
+    content: "\f185"; /* Sun icon */
 }
