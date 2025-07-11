@@ -30,6 +30,7 @@
     --section-bg-dark: rgba(26, 36, 61, 0.8);
     --footer-bg-dark: #0a1120;
     --modal-bg-dark: #1a243d;
+    --footer-text-color: #ffffff; /* New variable for footer text */
 }
 
 /* Floating animation for product cards */
@@ -850,7 +851,7 @@ header {
 /* FOOTER */
 footer {
     background-color: var(--dark);
-    color: var(--light);
+    color: var(--footer-text-color); /* Updated to use new variable */
     padding: 60px 0 30px;
     position: relative;
 }
@@ -882,12 +883,13 @@ footer::before {
     margin: 20px 0;
     font-size: 1rem;
     line-height: 1.8;
+    color: var(--footer-text-color); /* Added color */
 }
 
 .footer-section h3 {
     font-size: 1.5rem;
     margin-bottom: 25px;
-    color: white;
+    color: var(--footer-text-color); /* Added color */
     position: relative;
     padding-bottom: 12px;
 }
@@ -911,6 +913,7 @@ footer::before {
     transition: var(--transition);
     display: inline-block;
     font-size: 1rem;
+    color: var(--footer-text-color); /* Added color */
 }
 
 .footer-links a:hover {
@@ -923,6 +926,7 @@ footer::before {
     display: flex;
     align-items: flex-start;
     font-size: 1rem;
+    color: var(--footer-text-color); /* Added color */
 }
 
 .contact-details i {
@@ -969,6 +973,21 @@ footer::before {
     color: var(--gray);
     position: relative;
     z-index: 2;
+}
+
+.developer-credit {
+    margin-top: 15px;
+    font-size: 0.9rem;
+    color: var(--gray);
+}
+
+.developer-credit a {
+    color: var(--accent);
+    transition: color 0.3s ease;
+}
+
+.developer-credit a:hover {
+    color: var(--secondary);
 }
 
 /* ANIMATIONS */
@@ -1371,6 +1390,7 @@ footer::before {
     --header-text-color: #e0e0e0;
     --hero-overlay-color-start: rgba(13, 42, 92, 0.9);
     --hero-overlay-color-end: rgba(0, 70, 100, 0.85);
+    --footer-text-color: #e0e0e0; /* Dark mode footer text color */
 }
 
 .dark-theme body {
@@ -1407,7 +1427,7 @@ footer::before {
 }
 
 .dark-theme .footer-about p {
-    color: #cbd5e0;
+    color: var(--footer-text-color); /* Ensure text color in dark mode */
 }
 
 .dark-theme .copyright {
