@@ -65,5 +65,5 @@ Sadat Amir
 3rd Year Computer Science Student
 Passionate about Web Development & Full-Stack Engineering
 
-📸 Preview
+📸 Live - Preview
 https://mendarine-commerce.netlify.app/
